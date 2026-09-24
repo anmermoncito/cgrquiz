@@ -1,0 +1,31 @@
+{
+  "name": "proyecto-quiz",
+  "version": "1.0.0",
+  "description": "Quiz interactivo generado desde exámenes PDF",
+  "main": "index.js",
+  "scripts": {
+    "extract": "node scripts/extract-pdfs.cjs && node scripts/build-positions.cjs",
+    "positions": "node scripts/build-positions.cjs",
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc && vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "lucide-react": "^1.47.0",
+    "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^6.3.289",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0"
+  }
+}
