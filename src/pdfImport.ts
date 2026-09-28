@@ -59,8 +59,11 @@ function isNoise(line: string) {
     /^Universidad Nacional Mayor de San Marcos$/i.test(line) ||
     /^OFICINA CENTRAL DE ADMISIÓN$/i.test(line) ||
     /^Prueba de Conocimientos del Concurso Público/i.test(line) ||
-    /^Referencias bibliográficas\s*[–-]/i.test(line) ||
-    /^Página\s+\d+$/i.test(line)
+    /^Referencias bibliográficas/i.test(line) ||
+    /^Página\s+\d+$/i.test(line) ||
+    /^Con asterisco/i.test(line) ||
+    /\bTEC \d+.*P[aá]gina \d+/i.test(line) ||
+    /^\d{2}\/\d{2}\/\d{4}(\s+\d{2}:\d{2}(:\d{2})?)?$/.test(line)
   );
 }
 
@@ -75,15 +78,12 @@ function isPageHeader(line: string) {
   );
 }
 
-function isTitleEcho(line: string, examen: string) {
-  if (/^COD\s*\d+/i.test(line)) return true;
+function isTitleEcho(line: string, echoNorms: Set<string>) {
+  // Una línea con marca de respuesta nunca es eco de encabezado (p. ej. "control gubernamental. *")
+  if (hasStarMark(line)) return false;
   const norm = normalizeValue(line);
   if (norm.length < 10) return false;
-  const parts = String(examen)
-    .split(' - ')
-    .map((p) => normalizeValue(p))
-    .filter((p) => p.length >= 10);
-  return parts.includes(norm);
+  return echoNorms.has(norm);
 }
 
 function isQuestionDecimal(line: string) {
@@ -155,20 +155,87 @@ export async function extractPdfText(file: File) {
   return pages.join('\n');
 }
 
+function isCodLine(line: string) {
+  return /^COD\s+\d/i.test(line);
+}
+
+function isTitleNoise(line: string) {
+  return (
+    /^Referencias bibliogr/i.test(line) ||
+    /^Página\s+\d+/i.test(line) ||
+    /^Con asterisco/i.test(line) ||
+    /\bTEC \d+.*P[aá]gina \d+/i.test(line) ||
+    /^\d{2}\/\d{2}\/\d{4}(\s+\d{2}:\d{2}(:\d{2})?)?$/.test(line) ||
+    /^--\s*\d+\s+of\s+\d+\s*--$/i.test(line) ||
+    /^Universidad Nacional Mayor de San Marcos$/i.test(line) ||
+    /^OFICINA CENTRAL DE ADMISIÓN$/i.test(line) ||
+    /^Prueba de Conocimientos del Concurso Público/i.test(line) ||
+    /^Concurso P[uú]blico de M[eé]ritos/i.test(line) ||
+    /^PRUEBA DE APTITUD/i.test(line) ||
+    /^Solucionario(\s+P[aá]gina.*)?$/i.test(line)
+  );
+}
+
+function isStructuralLine(line: string) {
+  return (
+    /^(?:PREGUNTA\s*)?\d{1,3}\s*[.)]\s*\S/i.test(line) ||
+    /^[A-E]\s*[).\-]\s*\S/i.test(line) ||
+    /^RESPUESTA\s*[:.-]/i.test(line) ||
+    /^Referencia bibliográfica\s*[:.-]/i.test(line) ||
+    /^(SOLUCI[OÓ]N|EXPLICACI[OÓ]N)\s*:/i.test(line) ||
+    /^(BLOQUE\s+[IVXLCDM]+\s*[:.-]|CONOCIMIENTOS\s|RAZONAMIENTO\s)/i.test(line)
+  );
+}
+
+function validYear(value: string | number | null | undefined) {
+  const n = Number(value);
+  return n >= 1990 && n <= 2035 ? n : null;
+}
+
+function yearFromDoc(headerLines: string[], filename: string): number | null {
+  let m = headerLines.join('\n').match(/COD\s*\d{2,4}\s*[-–—/]*\s*((?:19|20)\d{2})/i);
+  if (m && validYear(m[1])) return validYear(m[1]);
+  m = String(filename).match(/((?:19|20)\d{2})/);
+  if (m && validYear(m[1])) return validYear(m[1]);
+  m = headerLines.join('\n').match(/N°?\s*\d+\s*[-–]\s*((?:19|20)\d{2})/);
+  if (m && validYear(m[1])) return validYear(m[1]);
+  return null;
+}
+
 export function detectCodeAndPosition(text: string, fallbackName: string) {
   const lines = text.split('\n').map(normalizeLine).filter((line) => line && !isNoise(line));
-  const codeIndex = lines.findIndex((line) => /^COD\s*\d{2,4}(?:\s*-\s*\d{4})?/i.test(line));
+  const anio = yearFromDoc(lines.slice(0, 15), fallbackName);
+  const codeIndex = lines.findIndex(isCodLine);
   if (codeIndex >= 0) {
-    const codeMatch = lines[codeIndex].match(/COD\s*(\d{2,4})(?:\s*-\s*(\d{4}))?/i);
-    const codigo = codeMatch ? `COD ${codeMatch[1]}${codeMatch[2] ? `-${codeMatch[2]}` : ''}` : lines[codeIndex];
+    // El encabezado COD puede partirse en varias líneas
+    const codParts = [lines[codeIndex]];
+    let i = codeIndex + 1;
+    while (i < lines.length && isCodLine(lines[i])) {
+      codParts.push(lines[i]);
+      i += 1;
+    }
+    const cod = codParts.join(' ').replace(/\s+/g, ' ').trim();
+    const codeMatch = cod.match(/COD\s*(\d{2,4})(?:\s*-\s*(\d{4}))?/i);
+    const codigo = codeMatch ? `COD ${codeMatch[1]}${codeMatch[2] ? `-${codeMatch[2]}` : ''}` : cod;
+    // El puesto puede ocupar más de una línea: acumular hasta contenido estructural
     const sameLineRest = lines[codeIndex].replace(/^COD\s*\d{2,4}(?:\s*-\s*\d{4})?\s*[-/:]?\s*/i, '').trim();
-    const next = lines.slice(codeIndex + 1).find((line) => !/^COD\s/i.test(line) && !/^Referencias bibliogr/i.test(line));
-    const puesto = sameLineRest || next || fallbackName.replace(/\.pdf$/i, '');
-    return { codigo, puesto: normalizeValue(puesto) };
+    const puestoParts = sameLineRest && !isCodLine(sameLineRest) ? [sameLineRest] : [];
+    while (i < lines.length && puestoParts.length < 2) {
+      const line = lines[i];
+      if (isCodLine(line) || isTitleNoise(line)) {
+        i += 1;
+        continue;
+      }
+      if (isStructuralLine(line)) break;
+      puestoParts.push(line);
+      i += 1;
+    }
+    const puesto = puestoParts.join(' ').replace(/\s+/g, ' ').trim() || fallbackName.replace(/\.pdf$/i, '');
+    return { codigo, puesto: normalizeValue(puesto), echoLines: [...codParts, ...puestoParts], anio };
   }
   const title = lines.find((line) => /^(PRUEBA|EXAMEN|EVALUACI[OÓ]N|CUESTIONARIO|BANCO DE PREGUNTAS)\b.*$/i.test(line));
   const puesto = title || fallbackName.replace(/\.pdf$/i, '');
-  return { codigo: 'SIN CODIGO VERIFICADO', puesto: normalizeValue(puesto) };
+  return { codigo: 'SIN CODIGO VERIFICADO', puesto: normalizeValue(puesto), echoLines: title ? [title] : [], anio };
 }
 
 const QUESTION_RE = /^(?:PREGUNTA\s*)?(\d{1,3})\s*[.)]\s*(.*)$/i;
@@ -190,12 +257,17 @@ function splitInlineOptions(line: string) {
   return { head, opts };
 }
 
-export function parseQuestionsFromText(text: string, source: string, examen: string, categoria: string): ImportedQuestion[] {
+export function parseQuestionsFromText(text: string, source: string, examen: string, categoria: string, echoLines: string[] = []): ImportedQuestion[] {
+  const echoNorms = new Set(
+    [...echoLines, examen, ...String(examen).split(' - ')]
+      .map((l) => normalizeValue(l))
+      .filter((l) => l.length >= 10),
+  );
   const lines = text
     .replace(/\r/g, '')
     .split('\n')
     .map(normalizeLine)
-    .filter((line) => !isNoise(line) && !isPageHeader(line) && !isTitleEcho(line, examen));
+    .filter((line) => !isNoise(line) && !isPageHeader(line) && !isTitleEcho(line, echoNorms));
   const questions: ImportedQuestion[] = [];
   let current: ImportedQuestion | null = null;
   let lastOption: ImportedAlternative | null = null;

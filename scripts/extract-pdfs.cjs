@@ -37,19 +37,99 @@ function isNoise(line) {
     /^Universidad Nacional Mayor de San Marcos$/i.test(line) ||
     /^OFICINA CENTRAL DE ADMISIÓN$/i.test(line) ||
     /^Prueba de Conocimientos del Concurso Público/i.test(line) ||
-    /^Referencias bibliográficas\s*[–-]/i.test(line) ||
+    /^Referencias bibliográficas/i.test(line) ||
     /^COD\s+\d+/i.test(line) ||
-    /^Página\s+\d+$/i.test(line)
+    /^Página\s+\d+$/i.test(line) ||
+    /^Con asterisco/i.test(line) ||
+    /\bTEC \d+.*P[aá]gina \d+/i.test(line) ||
+    /^\d{2}\/\d{2}\/\d{4}(\s+\d{2}:\d{2}(:\d{2})?)?$/.test(line)
   );
 }
 
-function titleFrom(text, filename) {
+function isCodLine(line) {
+  return /^COD\s+\d/i.test(line);
+}
+
+function isTitleNoise(line) {
+  return (
+    /^Referencias bibliogr/i.test(line) ||
+    /^Página\s+\d+/i.test(line) ||
+    /^Con asterisco/i.test(line) ||
+    /\bTEC \d+.*P[aá]gina \d+/i.test(line) ||
+    /^\d{2}\/\d{2}\/\d{4}(\s+\d{2}:\d{2}(:\d{2})?)?$/.test(line) ||
+    /^--\s*\d+\s+of\s+\d+\s*--$/i.test(line) ||
+    /^Universidad Nacional Mayor de San Marcos$/i.test(line) ||
+    /^OFICINA CENTRAL DE ADMISIÓN$/i.test(line) ||
+    /^Prueba de Conocimientos del Concurso Público/i.test(line) ||
+    /^Concurso P[uú]blico de M[eé]ritos/i.test(line) ||
+    /^PRUEBA DE APTITUD/i.test(line) ||
+    /^Solucionario(\s+P[aá]gina.*)?$/i.test(line)
+  );
+}
+
+function isStructuralLine(line) {
+  return (
+    /^(?:PREGUNTA\s*)?\d{1,3}\s*[.)]\s*\S/i.test(line) ||
+    /^[A-E]\s*[).\-]\s*\S/i.test(line) ||
+    /^RESPUESTA\s*[:.-]/i.test(line) ||
+    /^Referencia bibliográfica\s*[:.-]/i.test(line) ||
+    /^(SOLUCI[OÓ]N|EXPLICACI[OÓ]N)\s*:/i.test(line) ||
+    /^(BLOQUE\s+[IVXLCDM]+\s*[:.-]|CONOCIMIENTOS\s|RAZONAMIENTO\s)/i.test(line)
+  );
+}
+
+function validYear(value) {
+  const n = Number(value);
+  return n >= 1990 && n <= 2035 ? n : null;
+}
+
+function yearFromDoc(headerLines, filename) {
+  // Prioridad 1: año del encabezado COD (p. ej. "COD 899-2022", "COD 636—2022")
+  let m = headerLines.join('\n').match(/COD\s*\d{2,4}\s*[-–—/]*\s*((?:19|20)\d{2})/i);
+  if (m && validYear(m[1])) return validYear(m[1]);
+  // Prioridad 2: año en el nombre del archivo (p. ej. COD_0888-2023.pdf)
+  m = String(filename).match(/((?:19|20)\d{2})/);
+  if (m && validYear(m[1])) return validYear(m[1]);
+  // Prioridad 3: año del concurso (p. ej. "Concurso Público de Méritos N° 02-2023-CG")
+  m = headerLines.join('\n').match(/N°?\s*\d+\s*[-–]\s*((?:19|20)\d{2})/);
+  if (m && validYear(m[1])) return validYear(m[1]);
+  return null;
+}
+
+function headerFrom(text, filename) {
   const lines = text.split('\n').map(normalizeLine).filter(Boolean);
   const balotario = lines.find((l) => /^BALOTARIO/i.test(l));
-  if (balotario) return balotario;
-  const cod = lines.find((l) => /^COD\s+\d+/i.test(l));
-  const afterCod = cod ? lines[lines.indexOf(cod) + 1] : '';
-  return [cod, afterCod].filter(Boolean).join(' - ') || path.basename(filename, '.pdf');
+  if (balotario) return { examen: balotario, echoLines: [balotario] };
+  const codIdx = lines.findIndex(isCodLine);
+  if (codIdx < 0) return { examen: path.basename(filename, '.pdf'), echoLines: [] };
+  // El encabezado COD puede partirse en varias líneas (p. ej. "COD 634-2022 / ... /" + "COD 728-2022 / ...")
+  const codParts = [lines[codIdx]];
+  let i = codIdx + 1;
+  while (i < lines.length && isCodLine(lines[i])) {
+    codParts.push(lines[i]);
+    i += 1;
+  }
+  const cod = codParts.join(' ').replace(/\s+/g, ' ').trim();
+  // El puesto puede ocupar más de una línea: acumular hasta contenido estructural (máx. 2 líneas)
+  const puestoParts = [];
+  while (i < lines.length && puestoParts.length < 2) {
+    const line = lines[i];
+    if (isCodLine(line) || isTitleNoise(line)) {
+      i += 1;
+      continue;
+    }
+    if (isStructuralLine(line)) break;
+    puestoParts.push(line);
+    i += 1;
+  }
+  const puesto = puestoParts.join(' ').replace(/\s+/g, ' ').trim();
+  // PDFs solo de referencias: sin puesto en el documento, usar el nombre del archivo
+  if (!puesto) return { examen: path.basename(filename, '.pdf'), echoLines: codParts };
+  return { examen: `${cod} - ${puesto}`, echoLines: [...codParts, ...puestoParts] };
+}
+
+function titleFrom(text, filename) {
+  return headerFrom(text, filename).examen;
 }
 
 function inferCategory(title, category) {
@@ -95,15 +175,12 @@ function normalizeValue(value) {
     .toUpperCase();
 }
 
-function isTitleEcho(line, examen) {
-  if (/^COD\s*\d+/i.test(line)) return true;
+function isTitleEcho(line, echoNorms) {
+  // Una línea con marca de respuesta nunca es eco de encabezado (p. ej. "control gubernamental. *")
+  if (hasStarMark(line)) return false;
   const norm = normalizeValue(line);
   if (norm.length < 10) return false;
-  const parts = String(examen)
-    .split(' - ')
-    .map((p) => normalizeValue(p))
-    .filter((p) => p.length >= 10);
-  return parts.includes(norm);
+  return echoNorms.has(norm);
 }
 
 function isQuestionDecimal(line) {
@@ -129,8 +206,13 @@ function splitInlineOptions(line) {
 
 function parseQuestions(text, file) {
   const source = path.relative(root, file).replace(/\\/g, '/');
-  const examen = titleFrom(text, file);
-  const lines = cleanText(text).split('\n').map(normalizeLine).filter((l) => !isNoise(l) && !isPageHeader(l) && !isTitleEcho(l, examen));
+  const { examen, echoLines } = headerFrom(text, file);
+  const echoNorms = new Set(
+    [...echoLines, examen, ...String(examen).split(' - ')]
+      .map((l) => normalizeValue(l))
+      .filter((l) => l.length >= 10),
+  );
+  const lines = cleanText(text).split('\n').map(normalizeLine).filter((l) => !isNoise(l) && !isPageHeader(l) && !isTitleEcho(l, echoNorms));
   const questions = [];
   let current = null;
   let lastOption = null;
@@ -260,17 +342,21 @@ function parseQuestions(text, file) {
   const files = walk(pdfDir).sort((a, b) => a.localeCompare(b));
   const all = [];
   const pdfs = [];
+  const yearByFuente = new Map();
   for (const file of files) {
+    const fuente = path.relative(root, file).replace(/\\/g, '/');
     try {
       const parser = new PDFParse({ data: fs.readFileSync(file) });
       const result = await parser.getText();
       await parser.destroy();
+      const headerLines = String(result.text || '').replace(/\r/g, '').split('\n').map(normalizeLine).filter(Boolean).slice(0, 15);
+      yearByFuente.set(fuente, yearFromDoc(headerLines, file));
       const parsed = parseQuestions(result.text, file);
-      pdfs.push({ fuente: path.relative(root, file).replace(/\\/g, '/'), preguntas: parsed.length });
+      pdfs.push({ fuente, preguntas: parsed.length, anio: yearByFuente.get(fuente) });
       all.push(...parsed);
       console.log(`${path.basename(file)}: ${parsed.length} preguntas`);
     } catch (error) {
-      pdfs.push({ fuente: path.relative(root, file).replace(/\\/g, '/'), preguntas: 0, error: error.message });
+      pdfs.push({ fuente, preguntas: 0, error: error.message });
       console.warn(`No se pudo procesar ${file}: ${error.message}`);
     }
   }
@@ -281,6 +367,7 @@ function parseQuestions(text, file) {
     nombre: q.examen,
     fuente: q.fuente,
     categoria: q.categoria,
+    anio: yearByFuente.get(q.fuente) ?? null,
     totalPreguntas: questions.filter((item) => item.examen === q.examen).length,
   }));
   const metadata = {

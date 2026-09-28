@@ -28,6 +28,7 @@ type Position = {
   entidad: string;
   fuente: string;
   totalPreguntas: number;
+  anio: number | null;
 };
 type Exam = {
   id: string;
@@ -40,6 +41,7 @@ type Exam = {
   preguntaIds: string[];
   fuente: string;
   origen: 'base' | 'usuario';
+  anio: number | null;
   advertencias?: string[];
 };
 type DraftExam = {
@@ -49,6 +51,7 @@ type DraftExam = {
   puesto: string;
   categoria: string;
   profesion: string;
+  anio: number | null;
   questions: Question[];
   warnings: string[];
   rawText: string;
@@ -70,6 +73,21 @@ const DEFAULT_PROFESSION = 'PROFESION PENDIENTE';
 
 function unique(values: string[]) {
   return [...new Set(values.filter(Boolean))];
+}
+
+function yearFromText(value: string): number | null {
+  const m = String(value || '').match(/((?:19|20)\d{2})/);
+  if (!m) return null;
+  const n = Number(m[1]);
+  return n >= 1990 && n <= 2035 ? n : null;
+}
+
+function examYear(exam: Exam): number | null {
+  return exam.anio ?? yearFromText(exam.codigo) ?? yearFromText(exam.archivo_pdf);
+}
+
+function yearLabel(year: number | null): string {
+  return year ? String(year) : 'SIN AÑO';
 }
 
 function shuffle<T>(items: T[]) {
@@ -103,6 +121,7 @@ function buildBaseExams(): Exam[] {
       preguntaIds: qs.map((question) => question.id),
       fuente: position.fuente,
       origen: 'base',
+      anio: position.anio ?? null,
       advertencias: position.codigo === 'SIN CODIGO VERIFICADO' ? ['Código pendiente de revisión manual.'] : [],
     };
   });
@@ -183,6 +202,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(DEFAULT_CATEGORY);
   const [selectedProfession, setSelectedProfession] = useState(DEFAULT_PROFESSION);
+  const [selectedYear, setSelectedYear] = useState('TODOS');
   const [selectedExamId, setSelectedExamId] = useState('');
   const [questionAmount, setQuestionAmount] = useState(20);
   const [validation, setValidation] = useState('');
@@ -205,11 +225,21 @@ function App() {
   const questionById = useMemo(() => new Map(allQuestions.map((question) => [question.id, question])), [allQuestions]);
   const categories = useMemo(() => unique(exams.map((exam) => exam.categoria)).sort(), [exams]);
   const professionsForCategory = useMemo(() => unique(exams.filter((exam) => exam.categoria === selectedCategory).flatMap((exam) => exam.profesiones)).sort(), [exams, selectedCategory]);
+  const yearsForSelection = useMemo(() => {
+    const years = unique(exams
+      .filter((exam) => exam.categoria === selectedCategory)
+      .filter((exam) => exam.profesiones.includes(selectedProfession))
+      .map((exam) => yearLabel(examYear(exam))));
+    const numeric = years.filter((y) => y !== 'SIN AÑO').sort((a, b) => Number(b) - Number(a));
+    if (years.includes('SIN AÑO')) numeric.push('SIN AÑO');
+    return numeric;
+  }, [exams, selectedCategory, selectedProfession]);
   const filteredExams = useMemo(() => exams
     .filter((exam) => exam.categoria === selectedCategory)
     .filter((exam) => exam.profesiones.includes(selectedProfession))
+    .filter((exam) => selectedYear === 'TODOS' || yearLabel(examYear(exam)) === selectedYear)
     .filter((exam) => `${exam.codigo} ${exam.puesto} ${exam.archivo_pdf}`.toLowerCase().includes(query.toLowerCase()))
-    .sort((a, b) => a.puesto.localeCompare(b.puesto)), [exams, selectedCategory, selectedProfession, query]);
+    .sort((a, b) => a.puesto.localeCompare(b.puesto)), [exams, selectedCategory, selectedProfession, selectedYear, query]);
   const selectedExam = filteredExams.find((exam) => exam.id === selectedExamId) || null;
   const availableQuestions = selectedExam ? selectedExam.preguntaIds.map((id) => questionById.get(id)).filter(Boolean) as Question[] : [];
   const activeQuestion = quizQuestions[current];
@@ -223,6 +253,10 @@ function App() {
   useEffect(() => {
     if (!professionsForCategory.includes(selectedProfession)) setSelectedProfession(professionsForCategory[0] || DEFAULT_PROFESSION);
   }, [professionsForCategory, selectedProfession]);
+
+  useEffect(() => {
+    if (selectedYear !== 'TODOS' && !yearsForSelection.includes(selectedYear)) setSelectedYear('TODOS');
+  }, [yearsForSelection, selectedYear]);
 
   useEffect(() => {
     if (!filteredExams.some((exam) => exam.id === selectedExamId)) setSelectedExamId(filteredExams[0]?.id || '');
@@ -332,7 +366,7 @@ function App() {
         const profesion = DEFAULT_PROFESSION;
         const source = `USUARIO/${file.name}`;
         const examen = `${detected.codigo} - ${detected.puesto}`;
-        const parsed = parseQuestionsFromText(rawText, source, examen, categoria) as Question[];
+        const parsed = parseQuestionsFromText(rawText, source, examen, categoria, detected.echoLines) as Question[];
         const draft: DraftExam = {
           id: newDraftId(),
           archivo_pdf: file.name,
@@ -340,6 +374,7 @@ function App() {
           puesto: detected.puesto,
           categoria,
           profesion,
+          anio: detected.anio ?? yearFromText(file.name),
           questions: parsed,
           warnings: [],
           rawText,
@@ -354,6 +389,7 @@ function App() {
           puesto: normalizeValue(file.name.replace(/\.pdf$/i, '')),
           categoria: DEFAULT_CATEGORY,
           profesion: DEFAULT_PROFESSION,
+          anio: yearFromText(file.name),
           questions: [],
           warnings: [`No se pudo procesar el PDF: ${error instanceof Error ? error.message : 'error desconocido'}`],
           rawText: '',
@@ -405,6 +441,7 @@ function App() {
       preguntaIds: questions.map((question) => question.id),
       fuente: `USUARIO/${draft.archivo_pdf}`,
       origen: 'usuario',
+      anio: draft.anio ?? yearFromText(draft.codigo) ?? yearFromText(draft.archivo_pdf),
       advertencias: draft.warnings,
     };
     setAllQuestions((prev) => [...prev, ...questions]);
@@ -412,11 +449,12 @@ function App() {
     setDrafts((prev) => prev.filter((item) => item.id !== draft.id));
     setSelectedCategory(categoria);
     setSelectedProfession(profesion);
+    setSelectedYear(yearLabel(exam.anio));
     setSelectedExamId(examId);
     setMode('practice');
   };
 
-  const allAdminExams = useMemo(() => exams.filter((exam) => `${exam.categoria} ${exam.profesiones.join(' ')} ${exam.codigo} ${exam.puesto} ${exam.archivo_pdf}`.toLowerCase().includes(query.toLowerCase())), [exams, query]);
+  const allAdminExams = useMemo(() => exams.filter((exam) => `${exam.categoria} ${exam.profesiones.join(' ')} ${exam.codigo} ${exam.puesto} ${exam.archivo_pdf} ${yearLabel(examYear(exam))}`.toLowerCase().includes(query.toLowerCase())), [exams, query]);
 
   if (screen === 'quiz' && activeQuestion) {
     return <main className="shell quiz-shell">
@@ -523,6 +561,7 @@ function App() {
       <section className="toolbar setup" aria-label="Configuración de práctica">
         <label><span>Categoría</span><select value={selectedCategory} onChange={(event) => setSelectedCategory(event.target.value)}>{categories.map((category) => <option key={category}>{category}</option>)}</select></label>
         <label><span>Profesión</span><select value={selectedProfession} onChange={(event) => setSelectedProfession(event.target.value)}>{professionsForCategory.map((profession) => <option key={profession}>{profession}</option>)}</select></label>
+        <label><span>Año</span><select value={selectedYear} onChange={(event) => setSelectedYear(event.target.value)}><option>TODOS</option>{yearsForSelection.map((year) => <option key={year}>{year}</option>)}</select></label>
         <label><span>Puesto</span><select value={selectedExamId} onChange={(event) => setSelectedExamId(event.target.value)}>{filteredExams.map((exam) => <option value={exam.id} key={exam.id}>{exam.puesto} ({exam.preguntaIds.length})</option>)}</select></label>
         <label className="search"><span>Buscar</span><Search size={18} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="COD, puesto, PDF..." /></label>
       </section>
@@ -534,6 +573,7 @@ function App() {
           <p><strong>Categoría:</strong> {selectedExam.categoria}</p>
           <p><strong>Profesión:</strong> {selectedProfession}</p>
           <p><strong>Código:</strong> {selectedExam.codigo}</p>
+          <p><strong>Año:</strong> {yearLabel(examYear(selectedExam))}</p>
           <p><strong>PDF:</strong> {selectedExam.archivo_pdf}</p>
           <p><strong>Banco disponible:</strong> {availableQuestions.length} preguntas</p>
           {!!selectedExam.advertencias?.length && <p className="warning">{selectedExam.advertencias.join(' ')}</p>}

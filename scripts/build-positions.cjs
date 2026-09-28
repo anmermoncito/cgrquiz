@@ -41,11 +41,23 @@ function careersFromSource(source) {
   if (/ADMINISTRATIV/.test(upper)) careers.push('Administración');
   if (/MEDIC/.test(upper)) careers.push('Medicina');
   if (/SISTEMAS/.test(upper)) careers.push('Ingeniería de Sistemas');
+  if (/CONTABILIDAD/.test(upper)) careers.push('Contabilidad'); 
   // Solo se registran carreras explícitamente mencionadas en el nombre del PDF.
   return careers.length ? careers : [NO_VERIFICADA];
 }
 
+function validYear(value) {
+  const n = Number(value);
+  return n >= 1990 && n <= 2035 ? n : null;
+}
+
+function yearFromSource(source) {
+  const m = String(source).match(/((?:19|20)\d{2})/);
+  return m ? validYear(m[1]) : null;
+}
+
 const bank = JSON.parse(fs.readFileSync(bankPath, 'utf8'));
+const anioByFuente = new Map((bank.examenes || []).map((exam) => [exam.fuente, exam.anio ?? null]));
 const bySource = new Map();
 for (const q of bank.preguntas) {
   if (!bySource.has(q.fuente)) bySource.set(q.fuente, []);
@@ -75,14 +87,17 @@ const puestos = [...bySource.entries()].map(([source, qs]) => {
     verificado,
     estado_verificacion: 'NO VERIFICADO: nombre/código tomado del encabezado o nombre del PDF; carreras no verificadas salvo mención explícita en el archivo.',
     totalPreguntas: qs.length,
+    anio: anioByFuente.get(source) ?? yearFromSource(source),
   };
 });
 
 const carreras = unique(puestos.flatMap((p) => p.carreras)).sort((a, b) => a.localeCompare(b));
+const anios = unique(puestos.map((p) => (p.anio ? String(p.anio) : ''))).filter(Boolean).sort((a, b) => Number(b) - Number(a));
 const metadata = {
   generadoEn: new Date().toISOString(),
   puestos: puestos.length,
   carreras: carreras.length,
+  anios,
   puestosVerificados: puestos.filter((p) => p.verificado).length,
   puestosNoVerificados: puestos.filter((p) => !p.verificado).length,
   nota: 'No se encontraron fuentes oficiales externas suficientes desde el entorno. No se inventaron carreras ni perfiles: se conservan como no verificados.',
