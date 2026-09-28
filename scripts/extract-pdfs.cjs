@@ -50,6 +50,22 @@ function isCodLine(line) {
   return /^COD\s+\d/i.test(line);
 }
 
+function isCodContinuation(line, codSoFar) {
+  // La lista de códigos puede continuar en líneas solo numéricas ("1327-1413-1418-2023", "2023")
+  return (
+    /[-–—/]\s*$/.test(codSoFar) &&
+    /^[\d\-–—/\s]+$/.test(line) &&
+    /(19|20)\d{2}/.test(line)
+  );
+}
+
+function stripRoleCode(value) {
+  // El puesto puede traer un código de rol al final ("AUDITOR/A ... EN GESTIÓN AUDI_027")
+  const m = String(value).match(/^(.*?)\s+([A-Z]{2,10}_\d{2,4})\s*$/);
+  if (m && m[1].trim().length >= 10) return m[1].trim();
+  return String(value).trim();
+}
+
 function isTitleNoise(line) {
   return (
     /^Referencias bibliogr/i.test(line) ||
@@ -109,6 +125,20 @@ function headerFrom(text, filename) {
     codParts.push(lines[i]);
     i += 1;
   }
+  while (i < lines.length && isCodContinuation(lines[i], codParts.join(' '))) {
+    codParts.push(lines[i]);
+    i += 1;
+  }
+  const extraEcho = [];
+  // La continuación y el puesto pueden venir en la misma línea ("1383-1401-1407-2023 AUDITOR/A ...")
+  if (i < lines.length) {
+    const m = lines[i].match(/^([\d\-–—/\s]+(?:19|20)\d{2})\s+(.+)$/);
+    if (m && /[-–—/]\s*$/.test(codParts.join(' '))) {
+      codParts.push(m[1]);
+      extraEcho.push(lines[i]);
+      lines[i] = m[2];
+    }
+  }
   const cod = codParts.join(' ').replace(/\s+/g, ' ').trim();
   // El puesto puede ocupar más de una línea: acumular hasta contenido estructural (máx. 2 líneas)
   const puestoParts = [];
@@ -122,10 +152,10 @@ function headerFrom(text, filename) {
     puestoParts.push(line);
     i += 1;
   }
-  const puesto = puestoParts.join(' ').replace(/\s+/g, ' ').trim();
+  const puesto = stripRoleCode(puestoParts.join(' ').replace(/\s+/g, ' ').trim());
   // PDFs solo de referencias: sin puesto en el documento, usar el nombre del archivo
   if (!puesto) return { examen: path.basename(filename, '.pdf'), echoLines: codParts };
-  return { examen: `${cod} - ${puesto}`, echoLines: [...codParts, ...puestoParts] };
+  return { examen: `${cod} - ${puesto}`, echoLines: [...codParts, ...extraEcho, ...puestoParts] };
 }
 
 function titleFrom(text, filename) {

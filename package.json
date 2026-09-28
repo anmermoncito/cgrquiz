@@ -4,7 +4,8 @@
   "description": "Quiz para el examen del CGR con preguntas pasadas",
   "main": "index.js",
   "scripts": {
-    "extract": "node scripts/extract-pdfs.cjs && node scripts/build-positions.cjs",
+    "extract": "node scripts/extract-pdfs.cjs && node scripts/extract-perfiles.cjs && node scripts/build-positions.cjs",
+    "perfiles": "node scripts/extract-perfiles.cjs",
     "positions": "node scripts/build-positions.cjs",
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",

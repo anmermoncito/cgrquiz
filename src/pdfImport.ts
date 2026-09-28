@@ -159,6 +159,22 @@ function isCodLine(line: string) {
   return /^COD\s+\d/i.test(line);
 }
 
+function isCodContinuation(line: string, codSoFar: string) {
+  // La lista de códigos puede continuar en líneas solo numéricas ("1327-1413-1418-2023", "2023")
+  return (
+    /[-–—/]\s*$/.test(codSoFar) &&
+    /^[\d\-–—/\s]+$/.test(line) &&
+    /(19|20)\d{2}/.test(line)
+  );
+}
+
+function stripRoleCode(value: string) {
+  // El puesto puede traer un código de rol al final ("AUDITOR/A ... EN GESTIÓN AUDI_027")
+  const m = String(value).match(/^(.*?)\s+([A-Z]{2,10}_\d{2,4})\s*$/);
+  if (m && m[1].trim().length >= 10) return m[1].trim();
+  return String(value).trim();
+}
+
 function isTitleNoise(line: string) {
   return (
     /^Referencias bibliogr/i.test(line) ||
@@ -202,6 +218,25 @@ function yearFromDoc(headerLines: string[], filename: string): number | null {
   return null;
 }
 
+function codesFromCod(cod: string, fallbackName: string): string[] {
+  const out: string[] = [];
+  const re = /COD[\s_]*([\d\s_\-–—/]+?(?:19|20)\d{2})/gi;
+  let m: RegExpExecArray | null;
+  const src = `${cod} ${fallbackName}`;
+  while ((m = re.exec(src))) {
+    const seg = m[1];
+    const year = (seg.match(/((?:19|20)\d{2})/) || [])[1];
+    if (!validYear(year)) continue;
+    const nums = seg.match(/\d{3,4}/g) || [];
+    if (nums.length && nums[nums.length - 1] === year) nums.pop();
+    for (const num of nums) {
+      const code = `${num}-${year}`;
+      if (!out.includes(code)) out.push(code);
+    }
+  }
+  return out;
+}
+
 export function detectCodeAndPosition(text: string, fallbackName: string) {
   const lines = text.split('\n').map(normalizeLine).filter((line) => line && !isNoise(line));
   const anio = yearFromDoc(lines.slice(0, 15), fallbackName);
@@ -213,6 +248,20 @@ export function detectCodeAndPosition(text: string, fallbackName: string) {
     while (i < lines.length && isCodLine(lines[i])) {
       codParts.push(lines[i]);
       i += 1;
+    }
+    while (i < lines.length && isCodContinuation(lines[i], codParts.join(' '))) {
+      codParts.push(lines[i]);
+      i += 1;
+    }
+    const extraEcho: string[] = [];
+    // La continuación y el puesto pueden venir en la misma línea ("1383-1401-1407-2023 AUDITOR/A ...")
+    if (i < lines.length) {
+      const m = lines[i].match(/^([\d\-–—/\s]+(?:19|20)\d{2})\s+(.+)$/);
+      if (m && /[-–—/]\s*$/.test(codParts.join(' '))) {
+        codParts.push(m[1]);
+        extraEcho.push(lines[i]);
+        lines[i] = m[2];
+      }
     }
     const cod = codParts.join(' ').replace(/\s+/g, ' ').trim();
     const codeMatch = cod.match(/COD\s*(\d{2,4})(?:\s*-\s*(\d{4}))?/i);
@@ -230,12 +279,12 @@ export function detectCodeAndPosition(text: string, fallbackName: string) {
       puestoParts.push(line);
       i += 1;
     }
-    const puesto = puestoParts.join(' ').replace(/\s+/g, ' ').trim() || fallbackName.replace(/\.pdf$/i, '');
-    return { codigo, puesto: normalizeValue(puesto), echoLines: [...codParts, ...puestoParts], anio };
+    const puesto = stripRoleCode(puestoParts.join(' ').replace(/\s+/g, ' ').trim()) || fallbackName.replace(/\.pdf$/i, '');
+    return { codigo, puesto: normalizeValue(puesto), echoLines: [...codParts, ...extraEcho, ...puestoParts], anio, codes: codesFromCod(codParts.join(' '), fallbackName) };
   }
   const title = lines.find((line) => /^(PRUEBA|EXAMEN|EVALUACI[OÓ]N|CUESTIONARIO|BANCO DE PREGUNTAS)\b.*$/i.test(line));
   const puesto = title || fallbackName.replace(/\.pdf$/i, '');
-  return { codigo: 'SIN CODIGO VERIFICADO', puesto: normalizeValue(puesto), echoLines: title ? [title] : [], anio };
+  return { codigo: 'SIN CODIGO VERIFICADO', puesto: normalizeValue(puesto), echoLines: title ? [title] : [], anio, codes: codesFromCod('', fallbackName) };
 }
 
 const QUESTION_RE = /^(?:PREGUNTA\s*)?(\d{1,3})\s*[.)]\s*(.*)$/i;
