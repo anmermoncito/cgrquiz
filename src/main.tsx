@@ -59,7 +59,7 @@ type DraftExam = {
 type Answer = { questionId: string; selected: string; correct: boolean | null; elapsedAt: number };
 type Screen = 'home' | 'quiz' | 'results' | 'review';
 type AdminMode = 'practice' | 'admin' | 'import';
-type StoredCatalog = { exams: Exam[]; customQuestions: Question[]; savedAt: string };
+type StoredCatalog = { version: string; exams: Exam[]; customQuestions: Question[]; savedAt: string };
 
 const baseQuestions = banco.preguntas as Question[];
 const basePositions = puestosData.puestos as Position[];
@@ -70,6 +70,11 @@ const HISTORY_KEY = 'quiz-interactivo-question-history-v2';
 const RESULTS_KEY = 'quiz-interactivo-last-result-v2';
 const DEFAULT_CATEGORY = 'CONTRALORIA';
 const DEFAULT_PROFESSION = 'PROFESION PENDIENTE';
+
+// Versión de los datos base: cambia en cada `npm run extract` (generadoEn/preguntas).
+// Si el catálogo guardado es de una versión anterior, se reconstruye desde la base
+// para que los PDFs nuevos y los cambios se reflejen sin borrar caché manualmente.
+const BASE_VERSION = `${metadata.generadoEn}|${metadata.preguntas}|${(puestosData.metadata as { generadoEn?: string })?.generadoEn || ''}|${basePositions.length}`;
 
 function unique(values: string[]) {
   return [...new Set(values.filter(Boolean))];
@@ -131,7 +136,15 @@ function loadCatalog(): { exams: Exam[]; questions: Question[] } {
   const base = buildBaseExams();
   try {
     const stored = JSON.parse(localStorage.getItem(CATALOG_KEY) || 'null') as StoredCatalog | null;
-    if (stored?.exams?.length) return { exams: stored.exams, questions: [...baseQuestions, ...(stored.customQuestions || [])] };
+    if (stored?.exams?.length) {
+      if (stored.version === BASE_VERSION) return { exams: stored.exams, questions: [...baseQuestions, ...(stored.customQuestions || [])] };
+      // La base cambió (nuevo deploy con más PDFs): reconstruir desde la base
+      // pero conservar los exámenes creados por el usuario y sus preguntas.
+      const userExams = stored.exams.filter((exam) => exam.origen === 'usuario');
+      const userQIds = new Set(userExams.flatMap((exam) => exam.preguntaIds));
+      const customQuestions = (stored.customQuestions || []).filter((question) => userQIds.has(question.id));
+      return { exams: [...base, ...userExams], questions: [...baseQuestions, ...customQuestions] };
+    }
   } catch {
     // continúa con base
   }
@@ -141,7 +154,7 @@ function loadCatalog(): { exams: Exam[]; questions: Question[] } {
 function saveCatalog(exams: Exam[], questions: Question[]) {
   const baseIds = new Set(baseQuestions.map((question) => question.id));
   const customQuestions = questions.filter((question) => !baseIds.has(question.id));
-  localStorage.setItem(CATALOG_KEY, JSON.stringify({ exams, customQuestions, savedAt: new Date().toISOString() } satisfies StoredCatalog));
+  localStorage.setItem(CATALOG_KEY, JSON.stringify({ version: BASE_VERSION, exams, customQuestions, savedAt: new Date().toISOString() } satisfies StoredCatalog));
 }
 
 function readHistory(): Record<string, string[]> {
