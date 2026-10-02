@@ -81,11 +81,83 @@ try {
 }
 const perfilByCodigo = perfiles.byCodigo || {};
 const perfilesGeneradoEn = (perfiles.metadata || {}).generadoEn || '';
+// Idempotencia: si el banco ya trae clones de una corrida anterior, se descartan
+// y se regeneran (los clones siempre llevan `grupo_id`; las originales no).
+bank.preguntas = bank.preguntas.filter((q) => !q.grupo_id);
 const bySource = new Map();
 for (const q of bank.preguntas) {
   if (!bySource.has(q.fuente)) bySource.set(q.fuente, []);
   bySource.get(q.fuente).push(q);
 }
+
+// Particiona los códigos de un examen según el puesto oficial de cada código
+// (orden de primera aparición). Un examen de un solo puesto devuelve una partición.
+// Los códigos sin perfil (typos del encabezado, p. ej. "0098" por "0998") se anexan
+// a la primera partición en vez de crear un examen fantasma.
+function partitionByPuesto(codes) {
+  const parts = [];
+  const huérfanos = [];
+  for (const c of codes) {
+    const hit = perfilByCodigo[c];
+    if (!hit) {
+      huérfanos.push(c);
+      continue;
+    }
+    let part = parts.find((p) => p.puesto === hit.puesto);
+    if (!part) {
+      part = { puesto: hit.puesto, codes: [] };
+      parts.push(part);
+    }
+    part.codes.push(c);
+  }
+  if (!parts.length && huérfanos.length) return [{ puesto: null, codes: huérfanos }];
+  if (huérfanos.length) parts[0].codes.push(...huérfanos.filter((c) => !parts[0].codes.includes(c)));
+  return parts;
+}
+
+// Desdoble: un examen por puesto, clonando las preguntas del PDF con IDs nuevos.
+// La primera partición conserva las preguntas originales; las demás son clones
+// con `grupo_id` propio. Solo afecta a exámenes multi-código con >1 puesto.
+const examGroups = [];
+const expandedQuestions = [...bank.preguntas];
+let examenesDesdoblados = 0;
+let clonesCreados = 0;
+for (const [source, qs] of bySource.entries()) {
+  const first = qs[0];
+  const codes = unique([...codesFromText(source), ...codesFromText(first.examen)]);
+  const parts = partitionByPuesto(codes);
+  if (parts.length <= 1) {
+    examGroups.push({ key: source, source, codes, puesto: parts[0] ? parts[0].puesto : null, questions: qs });
+    continue;
+  }
+  examenesDesdoblados += 1;
+  parts.forEach((part, i) => {
+    if (i === 0) {
+      examGroups.push({ key: source, source, codes: part.codes, puesto: part.puesto, questions: qs });
+      return;
+    }
+    const grupo_id = `${source}#${i}`;
+    const clones = qs.map((q) => ({
+      ...q,
+      id: `${q.id}-p${i}`,
+      grupo_id,
+      examen: `COD ${part.codes.join('-')} - ${part.puesto || first.examen}`,
+    }));
+    clonesCreados += clones.length;
+    expandedQuestions.push(...clones);
+    examGroups.push({ key: grupo_id, source, grupo_id, codes: part.codes, puesto: part.puesto, questions: clones });
+  });
+}
+bank.preguntas = expandedQuestions;
+// La lista `examenes` del banco se regenera desde las preguntas finales (idempotente).
+bank.examenes = [...new Map(expandedQuestions.map((q) => [q.examen, q])).values()].map((q) => ({
+  id: String(q.examen).toLowerCase().replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, ''),
+  nombre: q.examen,
+  fuente: q.fuente,
+  categoria: q.categoria,
+  anio: anioByFuente.get(q.fuente) ?? yearFromSource(q.fuente),
+  totalPreguntas: expandedQuestions.filter((item) => item.examen === q.examen).length,
+}));
 
 // Agrega el perfil oficial de cada código; en exámenes agrupados une los lugares
 // (el puesto, nivel, carreras y región coinciden; el lugar de prestación varía).
@@ -115,16 +187,16 @@ function convocatoriaPorAnio(anio) {
   return 'Concurso Público de Méritos N° 07-2022-CG';
 }
 
-const puestos = [...bySource.entries()].map(([source, qs]) => {
+const puestos = examGroups.map(({ source, grupo_id, codes, puesto: puestoPerfil, questions: qs }) => {
   const first = qs[0];
-  const codes = unique([...codesFromText(source), ...codesFromText(first.examen)]);
-  const nombre = positionName(first.examen, source, first.categoria);
-  const id = slug(`${codes.join('-') || nombre}-${source}`);
+  // Nombre oficial del anexo cuando hay perfil; si no, lo que diga el encabezado del PDF.
+  const nombre = puestoPerfil || positionName(first.examen, source, first.categoria);
+  const id = slug(`${codes.join('-') || nombre}-${nombre}-${source}`);
   const anio = anioByFuente.get(source) ?? yearFromSource(source);
   const perfil = mergePerfil(codes);
   const carreras = perfil && perfil.carreras.length ? perfil.carreras : [NO_VERIFICADA];
   const verificado = Boolean(perfil);
-  return {
+  const entry = {
     id,
     codigo: codes.length ? `COD ${codes[0]}` : 'SIN CODIGO VERIFICADO',
     codigos: codes,
@@ -145,7 +217,18 @@ const puestos = [...bySource.entries()].map(([source, qs]) => {
     anio,
     perfil,
   };
+  if (grupo_id) entry.grupo_id = grupo_id;
+  return entry;
 });
+
+// Persistir los clones en el banco para que los IDs sean estables entre despliegues.
+bank.metadata.preguntas = bank.preguntas.length;
+bank.metadata.conRespuesta = bank.preguntas.filter((q) => q.respuesta_correcta).length;
+bank.metadata.sinRespuesta = bank.preguntas.filter((q) => !q.respuesta_correcta).length;
+bank.metadata.examenes = bank.examenes.length;
+bank.metadata.desdobles = { examenesDesdoblados, clonesCreados };
+fs.writeFileSync(bankPath, JSON.stringify(bank, null, 2), 'utf8');
+console.log(`Banco actualizado: ${examenesDesdoblados} exámenes desdoblados, ${clonesCreados} preguntas clonadas (${bank.preguntas.length} en total).`);
 
 const carreras = unique(puestos.flatMap((p) => p.carreras)).sort((a, b) => a.localeCompare(b));
 const anios = unique(puestos.map((p) => (p.anio ? String(p.anio) : ''))).filter(Boolean).sort((a, b) => Number(b) - Number(a));

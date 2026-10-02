@@ -18,6 +18,7 @@ type Question = {
   explicacion: string;
   categoria: string;
   fuente: string;
+  grupo_id?: string;
   dificultad: string;
   tipo: string;
 };
@@ -30,6 +31,7 @@ type Position = {
   fuente: string;
   totalPreguntas: number;
   anio: number | null;
+  grupo_id?: string;
   perfil: {
     puesto: string;
     nivel_educativo: string;
@@ -99,7 +101,7 @@ const NO_CARRERA = 'SIN CARRERA VERIFICADA';
 // Versión de los datos base: cambia en cada `npm run extract` (generadoEn/preguntas/perfiles).
 // Si el catálogo guardado es de una versión anterior, se reconstruye desde la base
 // para que los PDFs nuevos y los cambios se reflejen sin borrar caché manualmente.
-const BASE_VERSION = `v3|${metadata.generadoEn}|${metadata.preguntas}|${(puestosData.metadata as { generadoEn?: string })?.generadoEn || ''}|${(perfilesData.metadata as { generadoEn?: string })?.generadoEn || ''}|${basePositions.length}`;
+const BASE_VERSION = `v4|${metadata.generadoEn}|${metadata.preguntas}|${(puestosData.metadata as { generadoEn?: string })?.generadoEn || ''}|${(perfilesData.metadata as { generadoEn?: string })?.generadoEn || ''}|${basePositions.length}`;
 
 function unique(values: string[]) {
   return [...new Set(values.filter(Boolean))];
@@ -178,7 +180,8 @@ function formatTime(ms: number) {
 
 function buildBaseExams(): Exam[] {
   return basePositions.map((position) => {
-    const qs = baseQuestions.filter((question) => question.fuente === position.fuente);
+    const grupo = position.grupo_id ?? position.fuente;
+    const qs = baseQuestions.filter((question) => (question.grupo_id ?? question.fuente) === grupo);
     const perfil = position.perfil;
     const codes = (position as { codigos?: string[] }).codigos || [];
     return {
@@ -663,7 +666,7 @@ function App() {
       <div>
         <p className="eyebrow">Quiz interactivo desde PDFs reales</p>
         <h1>Exámenes por carrera, código, año y puesto</h1>
-        <p>Administra PDFs, corrige metadatos y practica con preguntas aleatorias sin duplicados.</p>
+        <p>Practica con preguntas aleatorias.</p>
       </div>
       <div className="metadata-card">
         <strong>{allQuestions.length.toLocaleString('es-PE')}</strong><span>preguntas disponibles</span>
