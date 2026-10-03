@@ -6,6 +6,7 @@
   "scripts": {
     "extract": "node scripts/extract-pdfs.cjs && node scripts/extract-perfiles.cjs && node scripts/build-positions.cjs",
     "perfiles": "node scripts/extract-perfiles.cjs",
+    "plazas2026": "node scripts/extract-postulantes.cjs && node scripts/extract-perfiles-2026.cjs",
     "positions": "node scripts/build-positions.cjs",
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",

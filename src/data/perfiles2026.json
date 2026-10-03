@@ -1,0 +1,3705 @@
+{
+  "metadata": {
+    "generadoEn": "2026-10-03T00:28:11.963Z",
+    "concurso": "Concurso Público de Méritos N° 06-2026-CG",
+    "fuente": "perfiles/CPM_06_2026_Anexo2.pdf",
+    "perfiles": 397,
+    "posiciones": 1049,
+    "unidades": 64,
+    "nota": "Campos exactos del PDF, sin agregados."
+  },
+  "unidades": [
+    "ESCUELA NACIONAL DE CONTROL",
+    "GERENCIA DE ADMINISTRACIÓN",
+    "GERENCIA DE ASESORÍA JURÍDICA Y NORMATIVIDAD EN CONTROL GUBERNAMENTAL",
+    "GERENCIA DE GESTIÓN DE PROYECTOS",
+    "GERENCIA DE TECNOLOGÍAS DE LA INFORMACIÓN Y GOBIERNO DIGITAL",
+    "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+    "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+    "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+    "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+    "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+    "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+    "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+    "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+    "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+    "GERENCIA REGIONAL DE CONTROL DE ICA",
+    "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+    "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+    "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+    "GERENCIA REGIONAL DE CONTROL DE LIMA METROPOLITANA",
+    "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+    "GERENCIA REGIONAL DE CONTROL DE LORETO",
+    "GERENCIA REGIONAL DE CONTROL DE MADRE DE DIOS",
+    "GERENCIA REGIONAL DE CONTROL DE MOQUEGUA",
+    "GERENCIA REGIONAL DE CONTROL DE PASCO",
+    "GERENCIA REGIONAL DE CONTROL DE PIURA",
+    "GERENCIA REGIONAL DE CONTROL DE PUNO",
+    "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+    "GERENCIA REGIONAL DE CONTROL DE TACNA",
+    "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+    "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+    "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+    "OFICINA DE SEGURIDAD Y DEFENSA NACIONAL",
+    "ÓRGANO INSTRUCTOR",
+    "ÓRGANO SANCIONADOR",
+    "PROCURADURÍA PÚBLICA",
+    "SECRETARÍA GENERAL",
+    "SUBDIRECCIÓN DE POSGRADO Y SERVICIOS ACADÉMICOS",
+    "SUBGERENCIA DE ABASTECIMIENTO",
+    "SUBGERENCIA DE ASESORÍA JURÍDICA",
+    "SUBGERENCIA DE BIENESTAR Y RELACIONES LABORALES",
+    "SUBGERENCIA DE COMUNICACIÓN Y MEDIOS DIGITALES",
+    "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+    "SUBGERENCIA DE CONTROL DEL SECTOR ECONÓMICO Y FINANCIERO",
+    "SUBGERENCIA DE CONTROL DEL SECTOR EDUCACIÓN",
+    "SUBGERENCIA DE CONTROL DEL SECTOR JUSTICIA, POLÍTICO Y ELECTORAL",
+    "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+    "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+    "SUBGERENCIA DE CONTROL DEL SECTOR SEGURIDAD INTERNA Y EXTERNA",
+    "SUBGERENCIA DE CONTROL DEL SECTOR SOCIAL Y CULTURA",
+    "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+    "SUBGERENCIA DE CONTROL DEL SECTOR VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+    "SUBGERENCIA DE COORDINACIÓN INSTITUCIONAL NACIONAL",
+    "SUBGERENCIA DE COORDINACIÓN PARLAMENTARIA",
+    "SUBGERENCIA DE GESTIÓN DE INVERSIONES",
+    "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+    "SUBGERENCIA DE MODERNIZACIÓN",
+    "SUBGERENCIA DE NORMATIVIDAD EN CONTROL GUBERNAMENTAL",
+    "SUBGERENCIA DE OPERACIONES Y PLATAFORMA TECNOLÓGICA",
+    "SUBGERENCIA DE PERSONAL Y COMPENSACIONES",
+    "SUBGERENCIA DE PLANEAMIENTO, PRESUPUESTO Y PROGRAMACIÓN DE INVERSIONES",
+    "SUBGERENCIA DE POLÍTICAS Y DESARROLLO HUMANO",
+    "SUBGERENCIA DE SEGUIMIENTO Y EVALUACIÓN DEL SISTEMA NACIONAL DE CONTROL",
+    "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+    "TRIBUNAL SUPERIOR DE RESPONSABILIDADES ADMINISTRATIVAS"
+  ],
+  "lugares": [
+    "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+    "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+    "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+    "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+    "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+    "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+    "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+    "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+    "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+    "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+    "OCIS DEL ÁMBITO DE LA GRC ICA",
+    "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+    "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+    "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+    "OCIS DEL ÁMBITO DE LA GRC LIMA METROPOLITANA",
+    "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+    "OCIS DEL ÁMBITO DE LA GRC LORETO",
+    "OCIS DEL ÁMBITO DE LA GRC MADRE DE DIOS",
+    "OCIS DEL ÁMBITO DE LA GRC MOQUEGUA",
+    "OCIS DEL ÁMBITO DE LA GRC PASCO",
+    "OCIS DEL ÁMBITO DE LA GRC PIURA",
+    "OCIS DEL ÁMBITO DE LA GRC PUNO",
+    "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+    "OCIS DEL ÁMBITO DE LA GRC TACNA",
+    "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+    "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+    "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+    "OCIS DEL ÁMBITO DE LA SGC ECONÓMICO Y FINANCIERO",
+    "OCIS DEL ÁMBITO DE LA SGC EDUCACIÓN",
+    "OCIS DEL ÁMBITO DE LA SGC JUSTICIA, POLÍTICO Y ELECTORAL",
+    "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+    "OCIS DEL ÁMBITO DE LA SGC SALUD",
+    "OCIS DEL ÁMBITO DE LA SGC SEGURIDAD INTERNA Y EXTERNA",
+    "OCIS DEL ÁMBITO DE LA SGC SOCIAL Y CULTURA",
+    "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+    "OCIS DEL ÁMBITO DE LA SGC VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+    "SEDE CENTRAL",
+    "SEDE ESCUELA NACIONAL DE CONTROL",
+    "SEDE MAGDALENA",
+    "SEDE REGIONAL APURÍMAC",
+    "SEDE REGIONAL AREQUIPA",
+    "SEDE REGIONAL AYACUCHO",
+    "SEDE REGIONAL CAJAMARCA",
+    "SEDE REGIONAL HUANCAVELICA",
+    "SEDE REGIONAL HUÁNUCO",
+    "SEDE REGIONAL LAMBAYEQUE",
+    "SEDE REGIONAL LORETO",
+    "SEDE REGIONAL PASCO",
+    "SEDE REGIONAL PIURA",
+    "SEDE REGIONAL PUNO",
+    "SEDE REGIONAL SAN MARTÍN"
+  ],
+  "perfiles": [
+    {
+      "cod_perfil": "403 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "404 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 13,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "405 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "406 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "407 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN GESTIÓN AMBIENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "408 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "409 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "410 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "411 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "412 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AMAZONAS",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AMAZONAS",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "413 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 14,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "414 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 22,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "415 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "416 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "417 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "418 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "419 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "420 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "421 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ÁNCASH",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ÁNCASH",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "422 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL APURÍMAC",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "423 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 5,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "424 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 14,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "425 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "426 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "427 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "428 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "429 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "430 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "431 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "432 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE APURÍMAC",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC APURÍMAC",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "433 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL AREQUIPA",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "434 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "435 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 15,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "436 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "437 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "438 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "439 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "440 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "441 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "442 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AREQUIPA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AREQUIPA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "443 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL AYACUCHO",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "444 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 9,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "445 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 19,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "446 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "447 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "448 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "449 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "450 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "451 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "452 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE AYACUCHO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC AYACUCHO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "453 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL CAJAMARCA",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "454 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 10,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "455 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 23,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "456 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "457 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "458 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "459 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "460 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "461 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "462 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CAJAMARCA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CAJAMARCA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "463 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "464 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "465 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "466 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "467 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "468 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "469 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "GERENCIA REGIONAL DE CONTROL DEL CALLAO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "470 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 7,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "471 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 22,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "472 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 6,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "473 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "474 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN GESTIÓN AMBIENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "475 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "476 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "477 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "478 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "479 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE CUSCO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC CUSCO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "480 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 7,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "481 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 12,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "482 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "483 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "484 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "485 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "486 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "487 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUANCAVELICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUANCAVELICA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "488 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL HUÁNUCO",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "489 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 7,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "490 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 13,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "491 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "492 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "493 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "494 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "495 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "496 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "497 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE HUÁNUCO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC HUÁNUCO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "498 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "499 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 10,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "500 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "501 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "502 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "503 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "504 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "505 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "506 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "507 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE ICA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC ICA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "508 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "509 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 12,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "510 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "511 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA Y PRODUCCIÓN AGRARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "512 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "513 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "514 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "515 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "516 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE JUNÍN",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC JUNÍN",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "517 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 8,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "518 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 21,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "519 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "520 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "521 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA Y PRODUCCIÓN AGRARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "522 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "523 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "524 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "525 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "526 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LA LIBERTAD",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LA LIBERTAD",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "527 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL LAMBAYEQUE",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "528 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "529 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "530 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "531 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "532 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA Y PRODUCCIÓN AGRARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "533 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "534 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "535 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN GESTIÓN AMBIENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "536 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LAMBAYEQUE",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LAMBAYEQUE",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "537 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA METROPOLITANA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 9,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA METROPOLITANA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "538 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA METROPOLITANA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 12,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA METROPOLITANA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "539 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA METROPOLITANA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA METROPOLITANA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "540 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA METROPOLITANA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA Y PRODUCCIÓN AGRARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA METROPOLITANA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "541 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA METROPOLITANA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA METROPOLITANA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "542 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA METROPOLITANA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA METROPOLITANA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "543 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "544 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 13,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "545 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "546 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "547 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "548 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "549 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN TECNOLOGÍAS DE LA INFORMACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "550 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "551 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LIMA PROVINCIAS",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LIMA PROVINCIAS",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "552 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL LORETO",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "553 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "554 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 16,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "555 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "556 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "557 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "558 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "559 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN GESTIÓN AMBIENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "560 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "561 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE LORETO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC LORETO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "562 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MADRE DE DIOS",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 5,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MADRE DE DIOS",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "563 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MADRE DE DIOS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MADRE DE DIOS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "564 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MADRE DE DIOS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MADRE DE DIOS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "565 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MADRE DE DIOS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MADRE DE DIOS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "566 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MADRE DE DIOS",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MADRE DE DIOS",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "567 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MOQUEGUA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MOQUEGUA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "568 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MOQUEGUA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MOQUEGUA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "569 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MOQUEGUA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MOQUEGUA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "570 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MOQUEGUA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MOQUEGUA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "571 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MOQUEGUA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MOQUEGUA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "572 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MOQUEGUA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MOQUEGUA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "573 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE MOQUEGUA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC MOQUEGUA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "574 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PASCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 7,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PASCO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "575 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PASCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PASCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "576 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PASCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PASCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "577 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PASCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PASCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "578 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PASCO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PASCO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "579 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PASCO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PASCO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "580 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL PIURA",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "581 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 6,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "582 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 13,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "583 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "584 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA Y PRODUCCIÓN AGRARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "585 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "586 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "587 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "588 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "589 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PIURA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PIURA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "590 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL PUNO",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "591 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 6,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PUNO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "592 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 22,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PUNO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "593 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PUNO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "594 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PUNO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "595 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PUNO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "596 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PUNO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "597 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PUNO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "598 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE PUNO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC PUNO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "599 - 2026",
+      "categoria_remunerativa": "APOYO III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "APOYO OPERATIVO/A II EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL SAN MARTÍN",
+      "remuneracion": "S/. 3,000.00"
+    },
+    {
+      "cod_perfil": "600 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 6,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "601 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 12,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "602 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "603 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN GESTIÓN AMBIENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "604 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "605 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "606 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "607 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE SAN MARTÍN",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC SAN MARTÍN",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "608 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TACNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TACNA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "609 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TACNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 6,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TACNA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "610 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TACNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TACNA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "611 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TACNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TACNA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "612 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TACNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TACNA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "613 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TACNA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TACNA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "614 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TACNA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TACNA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "615 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "616 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "617 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "618 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "619 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "620 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "621 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "622 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE TUMBES",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC TUMBES",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "623 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "624 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 6,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "625 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "626 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN GESTIÓN AMBIENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "627 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "628 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "629 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "630 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA REGIONAL DE CONTROL DE UCAYALI",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA GRC UCAYALI",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "631 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 5,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "632 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 17,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "633 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "634 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA Y PRODUCCIÓN AGRARIA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "635 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "636 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "637 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "638 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR AGRICULTURA Y AMBIENTE",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN GESTIÓN AMBIENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC AGRICULTURA Y AMBIENTE",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "639 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR ECONÓMICO Y FINANCIERO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC ECONÓMICO Y FINANCIERO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "640 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR ECONÓMICO Y FINANCIERO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 6,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC ECONÓMICO Y FINANCIERO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "641 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR ECONÓMICO Y FINANCIERO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC ECONÓMICO Y FINANCIERO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "642 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR ECONÓMICO Y FINANCIERO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC ECONÓMICO Y FINANCIERO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "643 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR ECONÓMICO Y FINANCIERO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN TECNOLOGÍAS DE LA INFORMACIÓN",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC ECONÓMICO Y FINANCIERO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "644 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR EDUCACIÓN",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC EDUCACIÓN",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "645 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR EDUCACIÓN",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 7,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC EDUCACIÓN",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "646 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR EDUCACIÓN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC EDUCACIÓN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "647 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR EDUCACIÓN",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC EDUCACIÓN",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "648 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR JUSTICIA, POLÍTICO Y ELECTORAL",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC JUSTICIA, POLÍTICO Y ELECTORAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "649 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR JUSTICIA, POLÍTICO Y ELECTORAL",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 14,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC JUSTICIA, POLÍTICO Y ELECTORAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "650 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR JUSTICIA, POLÍTICO Y ELECTORAL",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC JUSTICIA, POLÍTICO Y ELECTORAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "651 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR JUSTICIA, POLÍTICO Y ELECTORAL",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC JUSTICIA, POLÍTICO Y ELECTORAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "652 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR JUSTICIA, POLÍTICO Y ELECTORAL",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN TECNOLOGÍAS DE LA INFORMACIÓN",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC JUSTICIA, POLÍTICO Y ELECTORAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "653 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR JUSTICIA, POLÍTICO Y ELECTORAL",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC JUSTICIA, POLÍTICO Y ELECTORAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "654 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "655 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 16,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "656 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "657 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA Y PRODUCCIÓN AGRARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "658 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "659 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "660 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN TECNOLOGÍAS DE LA INFORMACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "661 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "662 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN GESTIÓN AMBIENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "663 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR PRODUCTIVO Y TRABAJO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC PRODUCTIVO Y TRABAJO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "664 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 9,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SALUD",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "665 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 27,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SALUD",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "666 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SALUD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "667 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SALUD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "668 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SALUD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "669 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SALUD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "670 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN TECNOLOGÍAS DE LA INFORMACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SALUD",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "671 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SALUD",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN CONTROL DE SERVICIOS DE SALUD",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SALUD",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "672 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SEGURIDAD INTERNA Y EXTERNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 5,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SEGURIDAD INTERNA Y EXTERNA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "673 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SEGURIDAD INTERNA Y EXTERNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 8,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SEGURIDAD INTERNA Y EXTERNA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "674 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SEGURIDAD INTERNA Y EXTERNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SEGURIDAD INTERNA Y EXTERNA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "675 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SEGURIDAD INTERNA Y EXTERNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SEGURIDAD INTERNA Y EXTERNA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "676 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SEGURIDAD INTERNA Y EXTERNA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SEGURIDAD INTERNA Y EXTERNA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "677 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SOCIAL Y CULTURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 6,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SOCIAL Y CULTURA",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "678 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SOCIAL Y CULTURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SOCIAL Y CULTURA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "679 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SOCIAL Y CULTURA",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN TECNOLOGÍAS DE LA INFORMACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SOCIAL Y CULTURA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "680 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR SOCIAL Y CULTURA",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC SOCIAL Y CULTURA",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "681 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "682 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 15,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "683 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "684 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "685 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "686 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "687 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "688 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "689 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR TRANSPORTES Y COMUNICACIONES",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC TRANSPORTES Y COMUNICACIONES",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "690 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "691 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "nombre_puesto": "AUDITOR/A ANALISTA I EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 12,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "692 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN SISTEMAS ADMINISTRATIVOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "693 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "nombre_puesto": "AUDITOR/A ANALISTA II EN EQUIPOS, INSTALACIONES Y SISTEMAS ELECTROMECÁNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "694 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN ASESORÍA LEGAL PARA EL CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "695 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN OBRAS E INFRAESTRUCTURA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "696 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE CONTROL DEL SECTOR VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "nombre_puesto": "AUDITOR/A ESPECIALISTA I EN INFRAESTRUCTURA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "OCIS DEL ÁMBITO DE LA SGC VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "697 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE POLÍTICAS Y DESARROLLO HUMANO",
+      "nombre_puesto": "ANALISTA I EN PROCESOS DE GESTIÓN DEL TALENTO",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "698 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE POLÍTICAS Y DESARROLLO HUMANO",
+      "nombre_puesto": "ANALISTA I EN SELECCIÓN DE PERSONAL",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "699 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE POLÍTICAS Y DESARROLLO HUMANO",
+      "nombre_puesto": "ANALISTA II EN ANALÍTICA DE DATOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "700 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE POLÍTICAS Y DESARROLLO HUMANO",
+      "nombre_puesto": "ANALISTA II EN DESARROLLO DEL TALENTO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "701 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE POLÍTICAS Y DESARROLLO HUMANO",
+      "nombre_puesto": "ESPECIALISTA I EN PLANIFICACIÓN Y ORGANIZACIÓN DEL TRABAJO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "702 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE POLÍTICAS Y DESARROLLO HUMANO",
+      "nombre_puesto": "ESPECIALISTA II LEGAL EN POLÍTICAS DE RECURSOS HUMANOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "703 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE PERSONAL Y COMPENSACIONES",
+      "nombre_puesto": "ANALISTA I EN PLANILLAS Y BENEFICIOS SOCIALES",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "704 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE PERSONAL Y COMPENSACIONES",
+      "nombre_puesto": "ANALISTA I EN CONTROL DE ASISTENCIA Y PERMANENCIA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "705 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE PERSONAL Y COMPENSACIONES",
+      "nombre_puesto": "ANALISTA I EN ADMINISTRACIÓN DE PERSONAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "706 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE PERSONAL Y COMPENSACIONES",
+      "nombre_puesto": "ANALISTA II EN REMUNERACIONES Y PENSIONES",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "707 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE PERSONAL Y COMPENSACIONES",
+      "nombre_puesto": "ESPECIALISTA I EN GESTIÓN DE PERSONAL Y COMPENSACIONES",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "708 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE BIENESTAR Y RELACIONES LABORALES",
+      "nombre_puesto": "ANALISTA I EN GESTIÓN ADMINISTRATIVA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "709 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE BIENESTAR Y RELACIONES LABORALES",
+      "nombre_puesto": "ANALISTA II EN TRABAJO SOCIAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "710 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE BIENESTAR Y RELACIONES LABORALES",
+      "nombre_puesto": "ESPECIALISTA II EN MEDICINA OCUPACIONAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "711 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBDIRECCIÓN DE POSGRADO Y SERVICIOS ACADÉMICOS",
+      "nombre_puesto": "ESPECIALISTA I EN DISEÑO INSTRUCCIONAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE ESCUELA NACIONAL DE CONTROL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "712 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBDIRECCIÓN DE POSGRADO Y SERVICIOS ACADÉMICOS",
+      "nombre_puesto": "ESPECIALISTA II EN GESTIÓN DE PROCESOS ACADÉMICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE ESCUELA NACIONAL DE CONTROL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "713 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "ESCUELA NACIONAL DE CONTROL",
+      "nombre_puesto": "ANALISTA II EN GESTIÓN FINANCIERA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE ESCUELA NACIONAL DE CONTROL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "714 - 2026",
+      "categoria_remunerativa": "APOYO V",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ASISTENTE/A PROFESIONAL III EN GESTIÓN ADMINISTRATIVA DE SOCIEDADES DE AUDITORÍA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 4,000.00"
+    },
+    {
+      "cod_perfil": "715 - 2026",
+      "categoria_remunerativa": "APOYO V",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ASISTENTE/A PROFESIONAL III EN GESTIÓN DE TESORERÍA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 4,000.00"
+    },
+    {
+      "cod_perfil": "716 - 2026",
+      "categoria_remunerativa": "APOYO VI",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "APOYO OPERATIVO/A V EN CONDUCCIÓN VEHICULAR",
+      "numero_posiciones": 4,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 4,500.00"
+    },
+    {
+      "cod_perfil": "717 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ANALISTA I EN BASES Y CONCURSOS DE SOCIEDADES DE AUDITORÍA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "718 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ANALISTA I EN SEGUIMIENTO CONTRACTUAL DE SOCIEDADES DE AUDITORÍA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "719 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ANALISTA I EN CONTROL PREVIO DE BIENES Y SERVICIOS",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "720 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ANALISTA I EN CONTROL DE INGRESOS DE LOS RECURSOS FINANCIEROS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "721 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ANALISTA II EN OPERACIONES DE GASTOS E INGRESOS FINANCIERO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "722 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ANALISTA II EN CONTABILIZACIÓN DE OPERACIONES DE GASTOS E INGRESOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "723 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ANALISTA II EN GESTIÓN PÚBLICA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "724 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ESPECIALISTA II LEGAL EN GESTIÓN ADMINISTRATIVA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "725 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "GERENCIA DE ADMINISTRACIÓN",
+      "nombre_puesto": "ESPECIALISTA II LEGAL EN CONTRATACIONES",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "726 - 2026",
+      "categoria_remunerativa": "APOYO V",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ASISTENTE/A PROFESIONAL III EN CONTROL PATRIMONIAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 4,000.00"
+    },
+    {
+      "cod_perfil": "727 - 2026",
+      "categoria_remunerativa": "APOYO V",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ASISTENTE/A PROFESIONAL III EN EJECUCIÓN CONTRACTUAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 4,000.00"
+    },
+    {
+      "cod_perfil": "728 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ANALISTA I EN EJECUCIÓN CONTRACTUAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "729 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ANALISTA I EN GESTIÓN PRESUPUESTAL DE ABASTECIMIENTO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "730 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ANALISTA II EN INGENIERÍA ELECTROMECÁNICA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "731 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ANALISTA II EN INGENIERÍA SANITARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "732 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ANALISTA II EN CONTRATACIONES PÚBLICAS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "733 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ESPECIALISTA I EN CONTRATACIONES PÚBLICAS",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "734 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ESPECIALISTA II EN CONTRATACIONES PÚBLICAS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "735 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE ABASTECIMIENTO",
+      "nombre_puesto": "ESPECIALISTA II EN EJECUCIÓN CONTRACTUAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "736 - 2026",
+      "categoria_remunerativa": "APOYO IV",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "TÉCNICO/A I EN MICROGRABACIÓN DE DOCUMENTOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 3,500.00"
+    },
+    {
+      "cod_perfil": "737 - 2026",
+      "categoria_remunerativa": "APOYO IV",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "TÉCNICO/A I EN VALIDACIÓN DE DOCUMENTOS ELECTRÓNICOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 3,500.00"
+    },
+    {
+      "cod_perfil": "738 - 2026",
+      "categoria_remunerativa": "APOYO V",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "ASISTENTE/A PROFESIONAL III EN TRÁMITE DOCUMENTARIO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL PASCO",
+      "remuneracion": "S/. 4,000.00"
+    },
+    {
+      "cod_perfil": "739 - 2026",
+      "categoria_remunerativa": "APOYO V",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "ASISTENTE/A PROFESIONAL III EN TRÁMITE DOCUMENTARIO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE REGIONAL HUANCAVELICA",
+      "remuneracion": "S/. 4,000.00"
+    },
+    {
+      "cod_perfil": "740 - 2026",
+      "categoria_remunerativa": "APOYO V",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "ASISTENTE/A PROFESIONAL III EN MESA DE PARTES",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 4,000.00"
+    },
+    {
+      "cod_perfil": "741 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "ANALISTA I EN GESTIÓN ARCHIVÍSTICA Y DOCUMENTARIA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "742 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "ANALISTA I EN GESTIÓN Y PLANIFICACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "743 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "ANALISTA II EN LEGAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "744 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DOCUMENTARIA",
+      "nombre_puesto": "ESPECIALISTA II LEGAL DE MICROFORMAS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "745 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA DE GESTIÓN DE PROYECTOS",
+      "nombre_puesto": "ANALISTA I EN ANÁLISIS FINANCIERO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "746 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA DE GESTIÓN DE PROYECTOS",
+      "nombre_puesto": "ANALISTA I EN CONTRATACIONES Y PROCESOS DE SELECCIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "747 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA DE GESTIÓN DE PROYECTOS",
+      "nombre_puesto": "ANALISTA II EN FORMULACIÓN DE PROYECTOS DE INVERSIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "748 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "GERENCIA DE GESTIÓN DE PROYECTOS",
+      "nombre_puesto": "ESPECIALISTA II LEGAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "749 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE GESTIÓN DE INVERSIONES",
+      "nombre_puesto": "ESPECIALISTA I EN INVERSIÓN PÚBLICA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "750 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE NORMATIVIDAD EN CONTROL GUBERNAMENTAL",
+      "nombre_puesto": "ANALISTA I LEGAL EN NORMATIVIDAD DE CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "751 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE NORMATIVIDAD EN CONTROL GUBERNAMENTAL",
+      "nombre_puesto": "ANALISTA II LEGAL EN NORMATIVIDAD DE CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "752 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE ASESORÍA JURÍDICA",
+      "nombre_puesto": "ANALISTA I LEGAL EN MATERIA ADMINISTRATIVA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "753 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE ASESORÍA JURÍDICA",
+      "nombre_puesto": "ESPECIALISTA I LEGAL EN CONTRATACIONES Y PRESUPUESTO PÚBLICO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "754 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "GERENCIA DE ASESORÍA JURÍDICA Y NORMATIVIDAD EN CONTROL GUBERNAMENTAL",
+      "nombre_puesto": "ANALISTA II LEGAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "755 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "GERENCIA DE ASESORÍA JURÍDICA Y NORMATIVIDAD EN CONTROL GUBERNAMENTAL",
+      "nombre_puesto": "ESPECIALISTA II LEGAL EN GESTIÓN INSTITUCIONAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "756 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "GERENCIA DE ASESORÍA JURÍDICA Y NORMATIVIDAD EN CONTROL GUBERNAMENTAL",
+      "nombre_puesto": "ESPECIALISTA II LEGAL EN CONTROL GUBERNAMENTAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "757 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE COMUNICACIÓN Y MEDIOS DIGITALES",
+      "nombre_puesto": "ANALISTA I EN PLATAFORMAS DIGITALES",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "758 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE COMUNICACIÓN Y MEDIOS DIGITALES",
+      "nombre_puesto": "ANALISTA I EN CREACIÓN DE CONTENIDO DIGITAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "759 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE MODERNIZACIÓN",
+      "nombre_puesto": "ANALISTA I EN MODERNIZACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "760 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE MODERNIZACIÓN",
+      "nombre_puesto": "ESPECIALISTA II EN MODERNIZACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "761 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "ÓRGANO SANCIONADOR",
+      "nombre_puesto": "ANALISTA I LEGAL EN EVALUACIÓN DE EXPEDIENTES",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE ESCUELA NACIONAL DE CONTROL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "762 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "ÓRGANO INSTRUCTOR",
+      "nombre_puesto": "ANALISTA I LEGAL EN PROCEDIMIENTO ADMNISTRATIVO SANCIONADOR",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "SEDE ESCUELA NACIONAL DE CONTROL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "763 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE COORDINACIÓN INSTITUCIONAL NACIONAL",
+      "nombre_puesto": "ANALISTA I EN RELACIONES INSTITUCIONALES",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "764 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE COORDINACIÓN PARLAMENTARIA",
+      "nombre_puesto": "ANALISTA I LEGAL EN ATENCIÓN DE SOLICITUDES DEL CONGRESO DE LA REPÚBLICA",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "765 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE COORDINACIÓN PARLAMENTARIA",
+      "nombre_puesto": "ANALISTA II LEGAL EN ATENCIÓN DE SOLICITUDES DEL CONGRESO DE LA REPÚBLICA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "766 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE SEGUIMIENTO Y EVALUACIÓN DEL SISTEMA NACIONAL DE CONTROL",
+      "nombre_puesto": "ANALISTA I EN SEGUIMIENTO DE OBRAS PÚBLICAS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "767 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE SEGUIMIENTO Y EVALUACIÓN DEL SISTEMA NACIONAL DE CONTROL",
+      "nombre_puesto": "ESPECIALISTA I EN ANÁLISIS DE INFORMACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "768 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE SEGUIMIENTO Y EVALUACIÓN DEL SISTEMA NACIONAL DE CONTROL",
+      "nombre_puesto": "ANALISTA II EN SEGUIMIENTO Y CONTROL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "769 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE PLANEAMIENTO, PRESUPUESTO Y PROGRAMACIÓN DE INVERSIONES",
+      "nombre_puesto": "ANALISTA I EN PRESUPUESTO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "770 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE PLANEAMIENTO, PRESUPUESTO Y PROGRAMACIÓN DE INVERSIONES",
+      "nombre_puesto": "ANALISTA II EN INVERSIONES",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "771 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE PLANEAMIENTO, PRESUPUESTO Y PROGRAMACIÓN DE INVERSIONES",
+      "nombre_puesto": "ESPECIALISTA I EN PRESUPUESTO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "772 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE PLANEAMIENTO, PRESUPUESTO Y PROGRAMACIÓN DE INVERSIONES",
+      "nombre_puesto": "ESPECIALISTA II EN PRESUPUESTO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "773 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE OPERACIONES Y PLATAFORMA TECNOLÓGICA",
+      "nombre_puesto": "ANALISTA II EN PLATAFORMAS COLABORATIVAS Y CORREO ELECTRÓNICO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "774 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE OPERACIONES Y PLATAFORMA TECNOLÓGICA",
+      "nombre_puesto": "ESPECIALISTA II EN ADMINISTRACIÓN DE BASES DE DATOS (DBA)",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "775 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "GERENCIA DE TECNOLOGÍAS DE LA INFORMACIÓN Y GOBIERNO DIGITAL",
+      "nombre_puesto": "ANALISTA I LEGAL EN MATERIA INFORMÁTICA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "776 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "GERENCIA DE TECNOLOGÍAS DE LA INFORMACIÓN Y GOBIERNO DIGITAL",
+      "nombre_puesto": "ESPECIALISTA I EN GOBIERNO, INNOVACIÓN Y TRANSFORMACIÓN DIGITAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "777 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+      "nombre_puesto": "ANALISTA I EN SISTEMAS INFORMÁTICOS",
+      "numero_posiciones": 5,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "778 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+      "nombre_puesto": "ANALISTA II EN SISTEMA DE GESTIÓN DE LA SEGURIDAD DE LA INFORMACIÓN",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "779 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+      "nombre_puesto": "ANALISTA II EN DESARROLLO DE SOFTWARE",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "780 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+      "nombre_puesto": "ESPECIALISTA I EN CALIDAD DE DATOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "781 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+      "nombre_puesto": "ESPECIALISTA II EN CIENCIA DE DATOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "782 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+      "nombre_puesto": "ESPECIALISTA II EN GOBIERNO Y ARQUITECTURA DE DATOS",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "783 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+      "nombre_puesto": "ESPECIALISTA II EN IMPLEMENTACIÓN DE SOLUCIONES BASADAS EN INTELIGENCIA ARTIFICIAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "784 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SUBGERENCIA DE SISTEMAS DE INFORMACIÓN Y ANALÍTICA DE DATOS",
+      "nombre_puesto": "ESPECIALISTA II EN ARQUITECTURA DE APLICACIONES Y OPERACIONES DE DESARROLLO",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "785 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "PROCURADURÍA PÚBLICA",
+      "nombre_puesto": "ANALISTA I LEGAL EN MATERIA PENAL",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "786 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "PROCURADURÍA PÚBLICA",
+      "nombre_puesto": "ANALISTA I LEGAL EN MATERIA CIVIL",
+      "numero_posiciones": 3,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "787 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "PROCURADURÍA PÚBLICA",
+      "nombre_puesto": "ANALISTA I LEGAL EN MATERIA CONTENCIOSO ADMINISTRATIVO",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "788 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "PROCURADURÍA PÚBLICA",
+      "nombre_puesto": "ANALISTA I LEGAL EN MATERIA LABORAL",
+      "numero_posiciones": 5,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "789 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "PROCURADURÍA PÚBLICA",
+      "nombre_puesto": "ANALISTA II LEGAL EN MATERIA PENAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "790 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "PROCURADURÍA PÚBLICA",
+      "nombre_puesto": "ESPECIALISTA II EN GESTIÓN DE LA DEFENSA JURÍDICA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "791 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "TRIBUNAL SUPERIOR DE RESPONSABILIDADES ADMINISTRATIVAS",
+      "nombre_puesto": "ANALISTA II LEGAL EN EVALUACIÓN DE EXPEDIENTES",
+      "numero_posiciones": 5,
+      "lugar_prestacion": "SEDE MAGDALENA",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "792 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "TRIBUNAL SUPERIOR DE RESPONSABILIDADES ADMINISTRATIVAS",
+      "nombre_puesto": "ESPECIALISTA II LEGAL EN EVALUACIÓN DE EXPEDIENTES",
+      "numero_posiciones": 2,
+      "lugar_prestacion": "SEDE MAGDALENA",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "793 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "SECRETARÍA GENERAL",
+      "nombre_puesto": "ANALISTA I EN SEGUIMIENTO DE PROCESOS DE ADMINISTRACIÓN INTERNA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "794 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SECRETARÍA GENERAL",
+      "nombre_puesto": "ANALISTA II EN GESTIÓN PRESUPUESTAL, PLANEAMIENTO E INVERSIONES",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "795 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA II",
+      "unidad_organizacion": "SECRETARÍA GENERAL",
+      "nombre_puesto": "ANALISTA II EN CONTROL INTERNO Y TECNOLOGÍAS DE LA INFORMACIÓN",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 6,500.00"
+    },
+    {
+      "cod_perfil": "796 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA III",
+      "unidad_organizacion": "SECRETARÍA GENERAL",
+      "nombre_puesto": "ESPECIALISTA I EN ASESORÍA LEGAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 7,500.00"
+    },
+    {
+      "cod_perfil": "797 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA IV",
+      "unidad_organizacion": "SECRETARÍA GENERAL",
+      "nombre_puesto": "ESPECIALISTA II EN ASESORÍA LEGAL ESPECIALIZADA",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 8,500.00"
+    },
+    {
+      "cod_perfil": "798 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "OFICINA DE SEGURIDAD Y DEFENSA NACIONAL",
+      "nombre_puesto": "ANALISTA I EN SEGURIDAD Y DEFENSA NACIONAL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    },
+    {
+      "cod_perfil": "799 - 2026",
+      "categoria_remunerativa": "ESPECIALISTA I",
+      "unidad_organizacion": "OFICINA DE SEGURIDAD Y DEFENSA NACIONAL",
+      "nombre_puesto": "ANALISTA I EN OPERACIONES DEL CENTRO DE CONTROL",
+      "numero_posiciones": 1,
+      "lugar_prestacion": "SEDE CENTRAL",
+      "remuneracion": "S/. 5,500.00"
+    }
+  ]
+}

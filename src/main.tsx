@@ -85,7 +85,50 @@ type DraftExam = {
 };
 type Answer = { questionId: string; selected: string; correct: boolean | null; elapsedAt: number };
 type Screen = 'home' | 'quiz' | 'results' | 'review';
-type AdminMode = 'practice' | 'admin' | 'import';
+type AdminMode = 'practice' | 'admin' | 'import' | 'plazas';
+type Perfil2026 = {
+  cod_perfil: string; categoria_remunerativa: string; unidad_organizacion: string;
+  nombre_puesto: string; numero_posiciones: number; lugar_prestacion: string;
+  remuneracion: string | null;
+};
+type Postulante2026 = {
+  numero: number; tipo_doc: string; numero_documento: string;
+  apellidos_nombres: string; numero_perfil: string; condicion: string;
+};
+type PlazasData = {
+  perfiles: Perfil2026[]; postulantes: Postulante2026[];
+  unidades: string[]; lugares: string[];
+};
+
+// N° de perfil del código ("404 - 2026" -> "404") para relacionarlo con
+// N° PERFIL del postulante ("404"), sin modificar los datos originales.
+function clavePerfil(cod: string | number | null | undefined) {
+  const m = String(cod ?? '').match(/^\s*(\d+)/);
+  return m ? m[1] : '';
+}
+
+function Paginador({ total, pageSize, page, onSize, onPage }: {
+  total: number; pageSize: number; page: number;
+  onSize: (n: number) => void; onPage: (n: number) => void;
+}) {
+  const paginas = Math.max(1, Math.ceil(total / pageSize));
+  const actual = Math.min(Math.max(1, page), paginas);
+  const nums: (number | '…')[] = [];
+  for (let n = 1; n <= paginas; n++) {
+    if (n === 1 || n === paginas || Math.abs(n - actual) <= 2) nums.push(n);
+    else if (nums[nums.length - 1] !== '…') nums.push('…');
+  }
+  return <div className="paginador">
+    <span>Total encontrados: <strong>{total.toLocaleString('es-PE')}</strong></span>
+    <label><span>Registros por página</span><select value={pageSize} onChange={(e) => onSize(Number(e.target.value))}>{[25, 50, 100, 250].map((n) => <option key={n} value={n}>{n}</option>)}</select></label>
+    <span>Página <strong>{actual}</strong> de <strong>{paginas}</strong></span>
+    <div className="paginas">
+      <button className="secondary" disabled={actual <= 1} onClick={() => onPage(actual - 1)}>← Anterior</button>
+      {nums.map((n, i) => n === '…' ? <span key={`e${i}`} className="puntos">…</span> : <button key={n} className={n === actual ? 'primary' : 'secondary'} onClick={() => onPage(n)}>{n}</button>)}
+      <button className="secondary" disabled={actual >= paginas} onClick={() => onPage(actual + 1)}>Siguiente →</button>
+    </div>
+  </div>;
+}
 type StoredCatalog = { version: string; exams: Exam[]; customQuestions: Question[]; savedAt: string };
 
 const baseQuestions = banco.preguntas as Question[];
@@ -95,6 +138,7 @@ const QUESTION_AMOUNTS = [19, 20, 30, 40, 50, 100, 200];
 const CATALOG_KEY = 'quiz-interactivo-catalogo-v2';
 const HISTORY_KEY = 'quiz-interactivo-question-history-v2';
 const RESULTS_KEY = 'quiz-interactivo-last-result-v2';
+const SESSION_KEY = 'quiz-interactivo-sesion-v2';
 const DEFAULT_CATEGORY = 'CONTRALORIA';
 const NO_CARRERA = 'SIN CARRERA VERIFICADA';
 
@@ -263,6 +307,40 @@ function writeHistory(history: Record<string, string[]>) {
   localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
 }
 
+// Sesión de práctica en curso: permite retomar el examen tras recargar la app.
+// Guarda IDs (no objetos) para que la carga sea liviana; al restaurar se
+// rehidrata desde el catálogo vigente y se descarta si el examen ya no existe.
+type QuizSession = {
+  screen: 'quiz' | 'results' | 'review';
+  examId: string;
+  questionIds: string[];
+  current: number;
+  answers: Answer[];
+  startedAt: number | null;
+  finishedAt: number | null;
+  activeCarrera: string;
+  savedAt: string;
+};
+
+function readSession(): QuizSession | null {
+  try {
+    const s = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null') as QuizSession | null;
+    if (!s || !['quiz', 'results', 'review'].includes(s.screen)) return null;
+    if (!s.examId || !Array.isArray(s.questionIds) || !s.questionIds.length) return null;
+    return s;
+  } catch {
+    return null;
+  }
+}
+
+function writeSession(session: QuizSession | null) {
+  if (!session) {
+    localStorage.removeItem(SESSION_KEY);
+    return;
+  }
+  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+}
+
 function selectWithoutRecentRepeats(exam: Exam, pool: Question[], amount: number) {
   const uniquePool = [...new Map(pool.map((question) => [question.id, question])).values()];
   if (amount > uniquePool.length) throw new Error(`Este examen tiene ${uniquePool.length} preguntas disponibles.`);
@@ -302,7 +380,28 @@ function duplicateWarnings(draft: DraftExam, exams: Exam[], questions: Question[
 
 function App() {
   const initial = useMemo(loadCatalog, []);
-  const [screen, setScreen] = useState<Screen>('home');
+  // Si había una práctica en curso al recargar, se retoma donde quedó.
+  const restored = useMemo(() => {
+    const s = readSession();
+    if (!s) return null;
+    const exam = initial.exams.find((e) => e.id === s.examId);
+    if (!exam) return null;
+    const byId = new Map(initial.questions.map((q) => [q.id, q]));
+    const questions = s.questionIds.map((id) => byId.get(id)).filter(Boolean) as Question[];
+    if (!questions.length) return null;
+    const valid = new Set(questions.map((q) => q.id));
+    return {
+      screen: (s.screen === 'quiz' && s.finishedAt ? 'results' : s.screen) as Screen,
+      exam,
+      questions,
+      current: Math.min(Math.max(0, s.current || 0), questions.length - 1),
+      answers: (s.answers || []).filter((a) => a && valid.has(a.questionId)),
+      startedAt: typeof s.startedAt === 'number' ? s.startedAt : Date.now(),
+      finishedAt: typeof s.finishedAt === 'number' ? s.finishedAt : null,
+      activeCarrera: s.activeCarrera || '',
+    };
+  }, [initial]);
+  const [screen, setScreen] = useState<Screen>(restored?.screen ?? 'home');
   const [mode, setMode] = useState<AdminMode>('practice');
   const [allQuestions, setAllQuestions] = useState<Question[]>(initial.questions);
   const [exams, setExams] = useState<Exam[]>(initial.exams);
@@ -316,18 +415,55 @@ function App() {
   const [drafts, setDrafts] = useState<DraftExam[]>([]);
   const [importing, setImporting] = useState(false);
   const [adminEditId, setAdminEditId] = useState('');
-  const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
-  const [current, setCurrent] = useState(0);
-  const [answers, setAnswers] = useState<Answer[]>([]);
-  const [startedAt, setStartedAt] = useState<number | null>(null);
-  const [finishedAt, setFinishedAt] = useState<number | null>(null);
-  const [elapsedMs, setElapsedMs] = useState(0);
-  const [activeExam, setActiveExam] = useState<Exam | null>(null);
-  const [activeCarrera, setActiveCarrera] = useState('');
+  const [quizQuestions, setQuizQuestions] = useState<Question[]>(restored?.questions ?? []);
+  const [current, setCurrent] = useState(restored?.current ?? 0);
+  const [answers, setAnswers] = useState<Answer[]>(restored?.answers ?? []);
+  const [startedAt, setStartedAt] = useState<number | null>(restored?.startedAt ?? null);
+  const [finishedAt, setFinishedAt] = useState<number | null>(restored?.finishedAt ?? null);
+  const [elapsedMs, setElapsedMs] = useState(() => {
+    if (!restored?.startedAt) return 0;
+    if (restored.finishedAt) return Math.max(0, restored.finishedAt - restored.startedAt);
+    return Math.max(0, Date.now() - restored.startedAt);
+  });
+  const [activeExam, setActiveExam] = useState<Exam | null>(restored?.exam ?? null);
+  const [activeCarrera, setActiveCarrera] = useState(restored?.activeCarrera ?? '');
+  const [plazas, setPlazas] = useState<PlazasData | null>(null);
+  const [plazasLoading, setPlazasLoading] = useState(false);
+  const [plazasError, setPlazasError] = useState('');
+  const [plazaPerfil, setPlazaPerfil] = useState('TODOS');
+  const [plazaUnidad, setPlazaUnidad] = useState('TODOS');
+  const [plazaLugar, setPlazaLugar] = useState('TODOS');
+  const [plazaCond, setPlazaCond] = useState('TODOS');
+  const [plazaQuery, setPlazaQuery] = useState('');
+  const [plazaSelected, setPlazaSelected] = useState<string | null>(null);
+  const [plazaPage, setPlazaPage] = useState(1);
+  const [plazaPageSize, setPlazaPageSize] = useState(25);
+  const [perfilPage, setPerfilPage] = useState(1);
+  const [perfilPageSize, setPerfilPageSize] = useState(50);
   const timerRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
 
   useEffect(() => saveCatalog(exams, allQuestions), [exams, allQuestions]);
+
+  // Persiste la práctica en curso para retomarla tras recargar.
+  // Salir explícitamente al inicio (Volver) la descarta.
+  useEffect(() => {
+    if (screen === 'home' || !activeExam || !quizQuestions.length) {
+      if (screen === 'home') writeSession(null);
+      return;
+    }
+    writeSession({
+      screen: screen as 'quiz' | 'results' | 'review',
+      examId: activeExam.id,
+      questionIds: quizQuestions.map((q) => q.id),
+      current,
+      answers,
+      startedAt,
+      finishedAt,
+      activeCarrera,
+      savedAt: new Date().toISOString(),
+    });
+  }, [screen, activeExam, quizQuestions, current, answers, startedAt, finishedAt, activeCarrera]);
 
   const questionById = useMemo(() => new Map(allQuestions.map((question) => [question.id, question])), [allQuestions]);
   const categories = useMemo(() => unique(exams.map((exam) => exam.categoria)).sort(), [exams]);
@@ -580,6 +716,98 @@ function App() {
 
   const allAdminExams = useMemo(() => exams.filter((exam) => `${exam.categoria} ${exam.carreras.join(' ')} ${exam.codigos.map((c) => `COD ${c}`).join(' ')} ${exam.puesto} ${exam.archivo_pdf} ${exam.region || ''} ${yearLabel(examYear(exam))}`.toLowerCase().includes(query.toLowerCase())), [exams, query]);
 
+  useEffect(() => {
+    if (mode !== 'plazas' || plazas || plazasLoading) return;
+    setPlazasLoading(true);
+    setPlazasError('');
+    Promise.all([import('./data/perfiles2026.json'), import('./data/postulantes2026.json')])
+      .then(([perfilesMod, postulantesMod]) => {
+        const perfiles = (perfilesMod.default.perfiles || []) as Perfil2026[];
+        const postulantes = (postulantesMod.default.postulantes || []) as Postulante2026[];
+        const unidades = [...new Set(perfiles.map((p) => p.unidad_organizacion))].sort((a, b) => a.localeCompare(b));
+        const lugares = [...new Set(perfiles.map((p) => p.lugar_prestacion))].sort((a, b) => a.localeCompare(b));
+        setPlazas({ perfiles, postulantes, unidades, lugares });
+      })
+      .catch(() => setPlazasError('No se pudo cargar la data de plazas 2026.'))
+      .finally(() => setPlazasLoading(false));
+  }, [mode, plazas, plazasLoading]);
+
+  const condNormalizada = (c: string) => String(c || '').replace(/\*$/, '').trim() || '(vacía)';
+
+  const postulantesPorPerfil = useMemo(() => {
+    const map = new Map<string, { total: number; califica: number; noCalifica: number; descalifica: number }>();
+    for (const p of plazas?.postulantes || []) {
+      const key = p.numero_perfil.trim();
+      if (!key) continue;
+      if (!map.has(key)) map.set(key, { total: 0, califica: 0, noCalifica: 0, descalifica: 0 });
+      const e = map.get(key)!;
+      e.total += 1;
+      const c = condNormalizada(p.condicion);
+      if (c === 'CALIFICA') e.califica += 1;
+      else if (c === 'NO CALIFICA') e.noCalifica += 1;
+      else e.descalifica += 1;
+    }
+    return map;
+  }, [plazas]);
+
+  const plazasStats = useMemo(() => {
+    if (!plazas) return null;
+    const totalPlazas = plazas.perfiles.reduce((acc, p) => acc + p.numero_posiciones, 0);
+    const califican = plazas.postulantes.filter((p) => condNormalizada(p.condicion) === 'CALIFICA').length;
+    const sinPostulantes = plazas.perfiles.filter((p) => !postulantesPorPerfil.has(clavePerfil(p.cod_perfil))).length;
+    return {
+      perfiles: plazas.perfiles.length,
+      plazas: totalPlazas,
+      postulantes: plazas.postulantes.length,
+      califican,
+      ratio: totalPlazas ? (califican / totalPlazas).toFixed(1) : '—',
+      sinPostulantes,
+    };
+  }, [plazas, postulantesPorPerfil]);
+
+  const perfilesPorSelects = useMemo(() => (plazas?.perfiles || [])
+    .filter((p) => plazaPerfil === 'TODOS' || p.cod_perfil === plazaPerfil)
+    .filter((p) => plazaUnidad === 'TODOS' || p.unidad_organizacion === plazaUnidad)
+    .filter((p) => plazaLugar === 'TODOS' || p.lugar_prestacion === plazaLugar)
+    .sort((a, b) => Number(clavePerfil(a.cod_perfil)) - Number(clavePerfil(b.cod_perfil))), [plazas, plazaPerfil, plazaUnidad, plazaLugar]);
+
+  const perfilesFiltrados = useMemo(() => {
+    const q = plazaQuery.trim().toLowerCase();
+    if (!q) return perfilesPorSelects;
+    return perfilesPorSelects.filter((p) => `${p.cod_perfil} ${p.nombre_puesto} ${p.unidad_organizacion} ${p.lugar_prestacion}`.toLowerCase().includes(q));
+  }, [perfilesPorSelects, plazaQuery]);
+
+  const postulantesDetalle = useMemo(() => {
+    if (!plazas) return [];
+    const q = plazaQuery.trim().toLowerCase();
+    const perfilTexto = new Map(plazas.perfiles.map((p) => [clavePerfil(p.cod_perfil), `${p.nombre_puesto} ${p.unidad_organizacion} ${p.lugar_prestacion}`.toLowerCase()]));
+    let list = plazas.postulantes;
+    if (plazaSelected) {
+      const sel = clavePerfil(plazaSelected);
+      list = list.filter((p) => p.numero_perfil.trim() === sel);
+    } else if (perfilesPorSelects.length < plazas.perfiles.length) {
+      const cods = new Set(perfilesPorSelects.map((p) => clavePerfil(p.cod_perfil)));
+      list = list.filter((p) => cods.has(p.numero_perfil.trim()));
+    }
+    if (plazaCond !== 'TODOS') list = list.filter((p) => condNormalizada(p.condicion) === plazaCond);
+    if (q) list = list.filter((p) => `${p.apellidos_nombres} ${p.numero_documento} ${p.numero_perfil}`.toLowerCase().includes(q) || (perfilTexto.get(p.numero_perfil.trim()) || '').includes(q));
+    return [...list].sort((a, b) => a.numero - b.numero);
+  }, [plazas, plazaSelected, perfilesPorSelects, plazaCond, plazaQuery]);
+
+  // Vuelven a la primera página cuando cambian los filtros (el total nunca se recorta).
+  useEffect(() => { setPlazaPage(1); }, [plazaPerfil, plazaUnidad, plazaLugar, plazaCond, plazaQuery, plazaSelected, plazaPageSize]);
+  useEffect(() => { setPerfilPage(1); }, [plazaPerfil, plazaUnidad, plazaLugar, plazaQuery, perfilPageSize]);
+
+  const perfilPaginas = Math.max(1, Math.ceil(perfilesFiltrados.length / perfilPageSize));
+  const perfilPageSafe = Math.min(Math.max(1, perfilPage), perfilPaginas);
+  const perfilesPagina = perfilesFiltrados.slice((perfilPageSafe - 1) * perfilPageSize, perfilPageSafe * perfilPageSize);
+  const postPaginas = Math.max(1, Math.ceil(postulantesDetalle.length / plazaPageSize));
+  const postPageSafe = Math.min(Math.max(1, plazaPage), postPaginas);
+  const postulantesPagina = postulantesDetalle.slice((postPageSafe - 1) * plazaPageSize, postPageSafe * plazaPageSize);
+  const perfilSeleccionado = plazas?.perfiles.find((p) => p.cod_perfil === plazaSelected) || null;
+
+  const PERFIL_CONDS = ['TODOS', 'CALIFICA', 'NO CALIFICA', 'DESCALIFICA'];
+
   if (screen === 'quiz' && activeQuestion) {
     return <main className="shell quiz-shell">
       <button className="ghost" onClick={() => setScreen('home')}><ArrowLeft size={18} /> Volver</button>
@@ -679,6 +907,7 @@ function App() {
       <button className={mode === 'practice' ? 'primary' : 'secondary'} onClick={() => setMode('practice')}>Practicar</button>
       <button className={mode === 'admin' ? 'primary' : 'secondary'} onClick={() => setMode('admin')}>Administración</button>
       <button className={mode === 'import' ? 'primary' : 'secondary'} onClick={() => setMode('import')}><FilePlus2 size={18} /> Agregar examen PDF</button>
+      <button className={mode === 'plazas' ? 'primary' : 'secondary'} onClick={() => setMode('plazas')}>Plazas 2026</button>
     </div>
 
     {mode === 'practice' && <>
@@ -765,6 +994,67 @@ function App() {
           </>}
         </div>)}
       </div>
+    </section>}
+
+    {mode === 'plazas' && <section className="exam-card setup-card">
+      <div className="quiz-topline"><div><p className="eyebrow">Concurso Público de Méritos N° 06-2026-CG</p><h2>Plazas y postulantes 2026</h2></div></div>
+      {plazasLoading && <p className="warning">Cargando plazas 2026...</p>}
+      {plazasError && <p className="warning" role="alert">{plazasError}</p>}
+      {plazas && plazasStats && <>
+        <div className="stats-grid plazas-stats">
+          <span>Perfiles <strong>{plazasStats.perfiles}</strong></span>
+          <span>Plazas <strong>{plazasStats.plazas.toLocaleString('es-PE')}</strong></span>
+          <span>Postulantes <strong>{plazasStats.postulantes.toLocaleString('es-PE')}</strong></span>
+          <span>Califican <strong>{plazasStats.califican.toLocaleString('es-PE')}</strong></span>
+          <span>Postulantes por plaza <strong>{plazasStats.ratio}</strong></span>
+          <span>Perfiles sin postulantes <strong>{plazasStats.sinPostulantes}</strong></span>
+        </div>
+        <section className="toolbar setup plazas-filters" aria-label="Filtros de plazas">
+          <label><span>Perfil</span><select value={plazaPerfil} onChange={(event) => { setPlazaPerfil(event.target.value); setPlazaSelected(event.target.value === 'TODOS' ? null : event.target.value); }}><option>TODOS</option>{plazas.perfiles.map((p) => <option key={p.cod_perfil} value={p.cod_perfil}>{clavePerfil(p.cod_perfil)} — {p.nombre_puesto.slice(0, 60)}</option>)}</select></label>
+          <label><span>Unidad de organización</span><select value={plazaUnidad} onChange={(event) => setPlazaUnidad(event.target.value)}><option>TODOS</option>{plazas.unidades.map((u) => <option key={u}>{u}</option>)}</select></label>
+          <label><span>Lugar de prestación</span><select value={plazaLugar} onChange={(event) => setPlazaLugar(event.target.value)}><option>TODOS</option>{plazas.lugares.map((l) => <option key={l}>{l}</option>)}</select></label>
+          <label><span>Condición</span><select value={plazaCond} onChange={(event) => setPlazaCond(event.target.value)}>{PERFIL_CONDS.map((c) => <option key={c}>{c}</option>)}</select></label>
+          <label className="search"><span>Buscar</span><Search size={18} /><input value={plazaQuery} onChange={(event) => { setPlazaQuery(event.target.value); setPlazaSelected(null); setPlazaPerfil('TODOS'); }} placeholder="Perfil, puesto, nombre, documento..." /></label>
+        </section>
+        <h3>Perfiles ({perfilesFiltrados.length})</h3>
+        <div className="plazas-table">
+          <div className="plazas-row plazas-head"><span>COD</span><span>Puesto</span><span>Unidad</span><span>Lugar</span><span>Plazas</span><span>Postulantes</span><span>Ratio</span></div>
+          {perfilesPagina.map((p) => {
+            const c = postulantesPorPerfil.get(clavePerfil(p.cod_perfil)) || { total: 0, califica: 0, noCalifica: 0, descalifica: 0 };
+            return <div className={`plazas-row${plazaSelected === p.cod_perfil ? ' selected' : ''}`} key={p.cod_perfil} onClick={() => setPlazaSelected((v) => v === p.cod_perfil ? null : p.cod_perfil)}>
+              <span><strong>COD {p.cod_perfil}</strong><br />{p.categoria_remunerativa}</span>
+              <span>{p.nombre_puesto}</span>
+              <span>{p.unidad_organizacion}</span>
+              <span>{p.lugar_prestacion}</span>
+              <span>{p.numero_posiciones}</span>
+              <span>{c.califica.toLocaleString('es-PE')} / {c.total.toLocaleString('es-PE')}</span>
+              <span>{p.numero_posiciones ? (c.califica / p.numero_posiciones).toFixed(1) : '—'}</span>
+            </div>;
+          })}
+        </div>
+        <Paginador total={perfilesFiltrados.length} pageSize={perfilPageSize} page={perfilPageSafe} onSize={setPerfilPageSize} onPage={setPerfilPage} />
+        <h3>Postulantes · Total encontrados: {postulantesDetalle.length.toLocaleString('es-PE')}</h3>
+        {perfilSeleccionado && <div className="position-summary">
+          <h2>PERFIL {perfilSeleccionado.cod_perfil}</h2>
+          <p><strong>Puesto:</strong> {perfilSeleccionado.nombre_puesto}</p>
+          <p><strong>Total de postulantes:</strong> {postulantesDetalle.length.toLocaleString('es-PE')}</p>
+          <p><strong>Página {postPageSafe} de {postPaginas}</strong></p>
+        </div>}
+        {plazaSelected && <p><button className="ghost" onClick={() => { setPlazaSelected(null); setPlazaPerfil('TODOS'); }}>← Ver todos los perfiles</button></p>}
+        <div className="plazas-table postulantes-table">
+          <div className="plazas-row plazas-head"><span>N°</span><span>TIPO DOC</span><span>N° DOCUMENTO</span><span>APELLIDOS Y NOMBRES</span><span>N° PERFIL</span><span>CONDICIÓN</span></div>
+          {postulantesPagina.map((p) => <div className="plazas-row" key={p.numero}>
+            <span>{p.numero}</span>
+            <span>{p.tipo_doc}</span>
+            <span>{p.numero_documento}</span>
+            <span>{p.apellidos_nombres}</span>
+            <span>{p.numero_perfil}</span>
+            <span className={condNormalizada(p.condicion) === 'CALIFICA' ? 'text-ok' : condNormalizada(p.condicion) === 'NO CALIFICA' ? 'text-pending' : 'text-bad'}><strong>{p.condicion || '—'}</strong></span>
+          </div>)}
+        </div>
+        <Paginador total={postulantesDetalle.length} pageSize={plazaPageSize} page={postPageSafe} onSize={setPlazaPageSize} onPage={setPlazaPage} />
+        {postulantesDetalle.length === 0 && <p className="warning">Sin resultados para los filtros actuales.</p>}
+      </>}
     </section>}
   </main>;
 }
