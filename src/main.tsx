@@ -85,7 +85,7 @@ type DraftExam = {
 };
 type Answer = { questionId: string; selected: string; correct: boolean | null; elapsedAt: number };
 type Screen = 'home' | 'quiz' | 'results' | 'review';
-type AdminMode = 'practice' | 'admin' | 'import' | 'plazas';
+type AdminMode = 'practice' | 'admin' | 'import' | 'plazas' | 'aptitud' | 'conocimientos' | 'consolidado';
 type Perfil2026 = {
   cod_perfil: string; categoria_remunerativa: string; unidad_organizacion: string;
   nombre_puesto: string; numero_posiciones: number; lugar_prestacion: string;
@@ -110,8 +110,7 @@ function clavePerfil(cod: string | number | null | undefined) {
 function Paginador({ total, pageSize, page, onSize, onPage }: {
   total: number; pageSize: number; page: number;
   onSize: (n: number) => void; onPage: (n: number) => void;
-}) {
-  const paginas = Math.max(1, Math.ceil(total / pageSize));
+}) {  const paginas = Math.max(1, Math.ceil(total / pageSize));
   const actual = Math.min(Math.max(1, page), paginas);
   const nums: (number | '…')[] = [];
   for (let n = 1; n <= paginas; n++) {
@@ -128,6 +127,434 @@ function Paginador({ total, pageSize, page, onSize, onPage }: {
       <button className="secondary" disabled={actual >= paginas} onClick={() => onPage(actual + 1)}>Siguiente →</button>
     </div>
   </div>;
+}
+
+function claseCondicion(condicion: string) {
+  const c = String(condicion || '').replace(/\*$/, '').trim();
+  return c === 'CALIFICA' ? 'text-ok' : c === 'NO CALIFICA' ? 'text-pending' : 'text-bad';
+}
+
+type SortDir = 'asc' | 'desc';
+type SortState = { key: string; dir: SortDir } | null;
+
+// Clic en encabezado: asc -> desc -> sin orden. Nulos/vacíos siempre al final.
+function nextSort(current: SortState, key: string): SortState {
+  if (!current || current.key !== key) return { key, dir: 'asc' };
+  if (current.dir === 'asc') return { key, dir: 'desc' };
+  return null;
+}
+
+function applySort<T>(rows: T[], sort: SortState, get: (row: T, key: string) => string | number | null): T[] {
+  if (!sort) return rows;
+  const m = sort.dir === 'asc' ? 1 : -1;
+  return [...rows].sort((ra, rb) => {
+    const va = get(ra, sort.key);
+    const vb = get(rb, sort.key);
+    const aNull = va === null || va === undefined || va === '';
+    const bNull = vb === null || vb === undefined || vb === '';
+    if (aNull && bNull) return 0;
+    if (aNull) return 1;
+    if (bNull) return -1;
+    if (typeof va === 'number' && typeof vb === 'number') return (va - vb) * m;
+    return String(va).localeCompare(String(vb), 'es', { numeric: true }) * m;
+  });
+}
+
+function SortTh({ label, k, sort, onSort, titulo }: { label: string; k: string; sort: SortState; onSort: (k: string) => void; titulo?: string }) {
+  const active = sort?.key === k;
+  return <span className={`sortable${active ? ' active' : ''}`} title={titulo || `${label}: clic para ordenar`} onClick={() => onSort(k)}>{label}{active ? (sort.dir === 'asc' ? ' ▲' : ' ▼') : ''}</span>;
+}
+
+type ResultadoEval = {
+  numero: number; tipo_doc: string; numero_documento: string;
+  numero_perfil: string; apellidos_nombres: string;
+  puntaje: string; condicion: string;
+};
+
+// Puntaje a número en memoria (el JSON guarda el texto exacto del PDF;
+// "-" de NO SE PRESENTÓ no tiene valor numérico).
+function numPuntajeEval(puntaje: string): number | null {
+  if (String(puntaje).trim() === '-') return null;
+  const v = Number(String(puntaje).replace(',', '.'));
+  return Number.isFinite(v) ? v : null;
+}
+
+// Ponderación oficial: aptitud 20% + conocimientos 30% (sobre 10 puntos).
+const PESO_APTITUD = 0.20;
+const PESO_CONOCIMIENTOS = 0.30;
+
+type PadronData = {
+  porDni: Map<string, Postulante2026>;
+  perfiles: Map<string, Perfil2026>;
+};
+
+// Padrón ya cargado (postulantes + perfiles 2026) para hacer match por DNI/puesto.
+function usePadron() {
+  const [padron, setPadron] = useState<PadronData | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    Promise.all([import('./data/postulantes2026.json'), import('./data/perfiles2026.json')])
+      .then(([qm, fm]) => {
+        if (!vivo) return;
+        const postulantes = (qm.default.postulantes || []) as Postulante2026[];
+        const perfiles = (fm.default.perfiles || []) as Perfil2026[];
+        setPadron({
+          porDni: new Map(postulantes.map((p) => [p.numero_documento, p])),
+          perfiles: new Map(perfiles.map((p) => [clavePerfil(p.cod_perfil), p])),
+        });
+      })
+      .catch(() => {});
+    return () => { vivo = false; };
+  }, []);
+  return padron;
+}
+
+function useEval(tag: 'aptitud' | 'conocimientos') {
+  const [data, setData] = useState<ResultadoEval[] | null>(null);
+  const [error, setError] = useState('');
+  useEffect(() => {
+    let vivo = true;
+    setError('');
+    const prom = tag === 'aptitud' ? import('./data/resultados_aptitud_2026.json') : import('./data/resultados_conocimientos_2026.json');
+    prom.then((mod) => { if (vivo) setData((mod.default.resultados || []) as ResultadoEval[]); })
+      .catch(() => { if (vivo) setError(`No se pudo cargar resultados de ${tag} 2026.`); });
+    return () => { vivo = false; };
+  }, [tag]);
+  return { data, error };
+}
+
+function SeccionEval({ titulo, tag }: { titulo: string; tag: 'aptitud' | 'conocimientos' }) {
+  const { data, error } = useEval(tag);
+  const padron = usePadron();
+  const [dni, setDni] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [codigo, setCodigo] = useState('');
+  const [perfilTxt, setPerfilTxt] = useState('');
+  const [puesto, setPuesto] = useState('TODOS');
+  const [perfil, setPerfil] = useState('TODOS');
+  const [cond, setCond] = useState('TODOS');
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(25);
+  const [sort, setSort] = useState<SortState>(null);
+
+  const conds = useMemo(() => unique((data || []).map((r) => r.condicion)).sort(), [data]);
+  const perfilesPresentes = useMemo(() => unique((data || []).map((r) => r.numero_perfil.trim()).filter(Boolean)).sort((a, b) => Number(a) - Number(b)), [data]);
+  const puestosPresentes = useMemo(() => {
+    if (!padron) return [];
+    return unique((data || []).map((r) => padron.perfiles.get(r.numero_perfil.trim())?.nombre_puesto || '').filter(Boolean)).sort((a, b) => a.localeCompare(b));
+  }, [data, padron]);
+
+  const stats = useMemo(() => {
+    if (!data) return null;
+    const nums = data.map((r) => numPuntajeEval(r.puntaje)).filter((v): v is number => v !== null);
+    const porCond: Record<string, number> = {};
+    data.forEach((r) => { porCond[r.condicion] = (porCond[r.condicion] || 0) + 1; });
+    return {
+      total: data.length,
+      porCond,
+      max: nums.length ? Math.max(...nums) : null,
+      prom: nums.length ? nums.reduce((a, b) => a + b, 0) / nums.length : null,
+    };
+  }, [data]);
+
+  const nombreDe = (r: ResultadoEval) => r.apellidos_nombres || padron?.porDni.get(r.numero_documento)?.apellidos_nombres || '';
+  const puestoDe = (r: ResultadoEval) => padron?.perfiles.get(r.numero_perfil.trim())?.nombre_puesto || '';
+
+  const filtrados = useMemo(() => {
+    const d = dni.trim(), n = nombre.trim().toLowerCase();
+    const c = codigo.trim(), t = perfilTxt.trim().toLowerCase();
+    return (data || [])
+      .filter((r) => !d || r.numero_documento.includes(d))
+      .filter((r) => {
+        if (!n) return true;
+        if (r.apellidos_nombres.toLowerCase().includes(n)) return true;
+        const pad = padron?.porDni.get(r.numero_documento);
+        return pad ? pad.apellidos_nombres.toLowerCase().includes(n) : false;
+      })
+      .filter((r) => {
+        if (!c) return true;
+        const np = r.numero_perfil.trim();
+        const grupos = c.match(/\d+/g) || [];
+        if (!np || !grupos.length) return false;
+        return grupos.some((g) => np.includes(g));
+      })
+      .filter((r) => !t || puestoDe(r).toLowerCase().includes(t))
+      .filter((r) => puesto === 'TODOS' || puestoDe(r) === puesto)
+      .filter((r) => perfil === 'TODOS' || r.numero_perfil.trim() === perfil)
+      .filter((r) => cond === 'TODOS' || r.condicion === cond)
+      .sort((a, b) => a.numero - b.numero);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, padron, dni, nombre, codigo, perfilTxt, puesto, perfil, cond]);
+
+  useEffect(() => { setPage(1); }, [dni, nombre, codigo, perfilTxt, puesto, perfil, cond, pageSize, tag]);
+
+  const ordenados = useMemo(() => applySort(filtrados, sort, (r, key) => {
+    switch (key) {
+      case 'numero': return r.numero;
+      case 'tipo': return r.tipo_doc;
+      case 'doc': return r.numero_documento;
+      case 'perfil': return r.numero_perfil.trim() ? Number(r.numero_perfil.trim()) : null;
+      case 'nombres': return nombreDe(r);
+      case 'puntaje': return numPuntajeEval(r.puntaje);
+      case 'cond': return r.condicion;
+      case 'puesto': return puestoDe(r);
+      default: return null;
+    }
+  }), [filtrados, sort, padron]);
+
+  const paginas = Math.max(1, Math.ceil(ordenados.length / pageSize));
+  const safe = Math.min(Math.max(1, page), paginas);
+  const pagina = ordenados.slice((safe - 1) * pageSize, safe * pageSize);
+
+  return <section className="exam-card setup-card">
+    <div className="quiz-topline"><div><p className="eyebrow">Concurso Público de Méritos N° 06-2026-CG</p><h2>{titulo}</h2></div></div>
+    {!data && !error && <p className="warning">Cargando resultados...</p>}
+    {error && <p className="warning" role="alert">{error}</p>}
+    {data && stats && <>
+      <div className="stats-grid plazas-stats">
+        <span>Evaluados <strong>{stats.total.toLocaleString('es-PE')}</strong></span>
+        {Object.entries(stats.porCond).map(([c, n]) => <span key={c}>{c.charAt(0) + c.slice(1).toLowerCase()} <strong>{(n as number).toLocaleString('es-PE')}</strong></span>)}
+        <span>Puntaje máximo <strong>{stats.max ?? '—'}</strong></span>
+        <span>Puntaje promedio <strong>{stats.prom !== null ? stats.prom.toFixed(2) : '—'}</strong></span>
+      </div>
+      <section className="toolbar setup plazas-filters" aria-label="Filtros de resultados">
+        <label><span>DNI</span><input value={dni} onChange={(e) => setDni(e.target.value)} placeholder="N° de documento..." /></label>
+        <label><span>Nombre</span><input value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Apellidos y nombres..." /></label>
+        <label><span>Código</span><input value={codigo} onChange={(e) => setCodigo(e.target.value)} placeholder="N° de perfil, ej. 404..." /></label>
+        <label><span>Perfil</span><input value={perfilTxt} onChange={(e) => setPerfilTxt(e.target.value)} placeholder="Texto del puesto, ej. auditor..." /></label>
+        <label><span>Puesto</span><select value={puesto} onChange={(e) => setPuesto(e.target.value)}><option>TODOS</option>{puestosPresentes.map((p) => <option key={p}>{p}</option>)}</select></label>
+        <label><span>Perfil</span><select value={perfil} onChange={(e) => setPerfil(e.target.value)}><option>TODOS</option>{perfilesPresentes.map((p) => <option key={p} value={p}>{p}</option>)}</select></label>
+        <label><span>Condición</span><select value={cond} onChange={(e) => setCond(e.target.value)}><option>TODOS</option>{conds.map((c) => <option key={c}>{c}</option>)}</select></label>
+      </section>
+      <div className="plazas-table eval-table">
+        <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="N°" k="numero" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="TIPO DOC" k="tipo" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="N° DOCUMENTO" k="doc" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="N° PERFIL" k="perfil" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APELLIDOS Y NOMBRES" k="nombres" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PUNTAJE" k="puntaje" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="CONDICIÓN" k="cond" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /></div>
+        {pagina.map((r, i) => <div className="plazas-row" key={`${tag}-${r.numero}`}>
+          <span>{(safe - 1) * pageSize + i + 1}</span>
+          <span>{r.numero}</span>
+          <span>{r.tipo_doc || '—'}</span>
+          <span>{r.numero_documento}</span>
+          <span>{r.numero_perfil}</span>
+          <span>{nombreDe(r) || '—'}</span>
+          <span>{r.puntaje}</span>
+          <span className={claseCondicion(r.condicion)}><strong>{r.condicion || '—'}</strong></span>
+          <span>{puestoDe(r) || '—'}</span>
+        </div>)}
+      </div>
+      <Paginador total={filtrados.length} pageSize={pageSize} page={safe} onSize={setPageSize} onPage={setPage} />
+      {filtrados.length === 0 && <p className="warning">Sin resultados para los filtros actuales.</p>}
+    </>}
+  </section>;
+}
+
+function SeccionConsolidado() {
+  const [apt, setApt] = useState<ResultadoEval[] | null>(null);
+  const [con, setCon] = useState<ResultadoEval[] | null>(null);
+  const [error, setError] = useState('');
+  const padron = usePadron();
+  const [dni, setDni] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [codigo, setCodigo] = useState('');
+  const [perfilTxt, setPerfilTxt] = useState('');
+  const [puesto, setPuesto] = useState('TODOS');
+  const [perfil, setPerfil] = useState('TODOS');
+  const [lugar, setLugar] = useState('TODOS');
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(25);
+  const [sort, setSort] = useState<SortState>(null);
+  const [pvPage, setPvPage] = useState(1);
+  const [pvPageSize, setPvPageSize] = useState(25);
+  const [pvSort, setPvSort] = useState<SortState>(null);
+  const [perfilSel, setPerfilSel] = useState<string | null>(null);
+
+  useEffect(() => {
+    let vivo = true;
+    Promise.all([import('./data/resultados_aptitud_2026.json'), import('./data/resultados_conocimientos_2026.json')])
+      .then(([am, cm]) => {
+        if (!vivo) return;
+        setApt((am.default.resultados || []) as ResultadoEval[]);
+        setCon((cm.default.resultados || []) as ResultadoEval[]);
+      })
+      .catch(() => { if (vivo) setError('No se pudo cargar el consolidado 2026.'); });
+    return () => { vivo = false; };
+  }, []);
+
+  const filas = useMemo(() => {
+    if (!apt || !con) return [];
+    const mA = new Map(apt.map((r) => [r.numero_documento, r]));
+    const mC = new Map(con.map((r) => [r.numero_documento, r]));
+    return unique([...mA.keys(), ...mC.keys()]).sort().map((doc) => {
+      const a = mA.get(doc) || null;
+      const c = mC.get(doc) || null;
+      const pad = padron?.porDni.get(doc) || null;
+      const nombres = pad?.apellidos_nombres || a?.apellidos_nombres || c?.apellidos_nombres || '';
+      const perf = (pad?.numero_perfil || '').trim() || (a?.numero_perfil || c?.numero_perfil || '').trim();
+      const puestoN = (perf && padron?.perfiles.get(perf)?.nombre_puesto) || '';
+      const lugarN = (perf && padron?.perfiles.get(perf)?.lugar_prestacion) || '';
+      const paNum = a ? numPuntajeEval(a.puntaje) : null;
+      const pcNum = c ? numPuntajeEval(c.puntaje) : null;
+      const prom = paNum !== null && pcNum !== null ? paNum * PESO_APTITUD + pcNum * PESO_CONOCIMIENTOS : null;
+      const distintoPerfil = Boolean(a && c && a.numero_perfil.trim() !== c.numero_perfil.trim());
+      return { dni: doc, nombres, perfil: perf, puesto: puestoN, lugar: lugarN, a, c, prom, distintoPerfil };
+    });
+  }, [apt, con, padron]);
+
+  const puestosPresentes = useMemo(() => unique(filas.map((f) => f.puesto).filter(Boolean)).sort((a, b) => a.localeCompare(b)), [filas]);
+  const perfilesPresentes = useMemo(() => unique(filas.map((f) => f.perfil).filter(Boolean)).sort((a, b) => Number(a) - Number(b)), [filas]);
+  const lugaresPresentes = useMemo(() => unique(filas.map((f) => f.lugar).filter(Boolean)).sort((a, b) => a.localeCompare(b)), [filas]);
+
+  const stats = useMemo(() => {
+    const conAmbas = filas.filter((f) => f.a && f.c).length;
+    const soloConoc = filas.filter((f) => !f.a && f.c).length;
+    const soloApt = filas.filter((f) => f.a && !f.c).length;
+    const proms = filas.map((f) => f.prom).filter((v): v is number => v !== null);
+    return {
+      total: filas.length, conAmbas, soloConoc, soloApt,
+      distintos: filas.filter((f) => f.distintoPerfil).length,
+      promGral: proms.length ? proms.reduce((x, y) => x + y, 0) / proms.length : null,
+    };
+  }, [filas]);
+
+  const filtradosBase = useMemo(() => {
+    const d = dni.trim(), n = nombre.trim().toLowerCase();
+    const c = codigo.trim(), t = perfilTxt.trim().toLowerCase();
+    return filas
+      .filter((f) => !d || f.dni.includes(d))
+      .filter((f) => !n || f.nombres.toLowerCase().includes(n))
+      .filter((f) => {
+        if (!c) return true;
+        const grupos = c.match(/\d+/g) || [];
+        if (!f.perfil || !grupos.length) return false;
+        return grupos.some((g) => f.perfil.includes(g));
+      })
+      .filter((f) => !t || f.puesto.toLowerCase().includes(t))
+      .filter((f) => puesto === 'TODOS' || f.puesto === puesto)
+      .filter((f) => perfil === 'TODOS' || f.perfil === perfil)
+      .filter((f) => lugar === 'TODOS' || f.lugar === lugar);
+  }, [filas, dni, nombre, codigo, perfilTxt, puesto, perfil, lugar]);
+
+  // Presionar una fila de perfil muestra sus postulantes sin tocar el filtro Perfil.
+  const filtrados = useMemo(() => (
+    perfilSel ? filtradosBase.filter((f) => f.perfil === perfilSel) : filtradosBase
+  ), [filtradosBase, perfilSel]);
+
+  useEffect(() => { setPage(1); setPerfilSel(null); }, [dni, nombre, codigo, perfilTxt, puesto, perfil, lugar, pageSize]);
+  useEffect(() => { setPvPage(1); }, [dni, nombre, codigo, perfilTxt, puesto, perfil, lugar, pvPageSize]);
+
+  // Perfiles presentes en el resultado actual: al elegir lugar salen primero
+  // los perfiles, y al presionar un perfil salen sus postulantes.
+  // No depende de la fila presionada para no colapsar la lista.
+  const perfilesVista = useMemo(() => {
+    const agg = new Map<string, { count: number; proms: number[]; puesto: string; lugar: string }>();
+    for (const f of filtradosBase) {
+      if (!f.perfil) continue;
+      const e = agg.get(f.perfil) || { count: 0, proms: [] as number[], puesto: f.puesto, lugar: f.lugar };
+      e.count++;
+      if (f.prom !== null) e.proms.push(f.prom);
+      agg.set(f.perfil, e);
+    }
+    return [...agg.entries()].map(([numero, e]) => {
+      const p = padron?.perfiles.get(numero);
+      return {
+        numero,
+        puesto: e.puesto || p?.nombre_puesto || '',
+        lugar: e.lugar || p?.lugar_prestacion || '',
+        plazas: p?.numero_posiciones ?? null,
+        postulantes: e.count,
+        prom: e.proms.length ? e.proms.reduce((x, y) => x + y, 0) / e.proms.length : null,
+      };
+    });
+  }, [filtradosBase, padron]);
+
+  const perfilesVistaOrd = useMemo(() => applySort(perfilesVista, pvSort, (p, key) => {
+    switch (key) {
+      case 'cod': return Number(p.numero) || null;
+      case 'puesto': return p.puesto;
+      case 'lugar': return p.lugar;
+      case 'plazas': return p.plazas;
+      case 'post': return p.postulantes;
+      case 'prom': return p.prom;
+      default: return null;
+    }
+  }), [perfilesVista, pvSort]);
+  const pvPaginas = Math.max(1, Math.ceil(perfilesVistaOrd.length / pvPageSize));
+  const pvSafe = Math.min(Math.max(1, pvPage), pvPaginas);
+  const pvPagina = perfilesVistaOrd.slice((pvSafe - 1) * pvPageSize, pvSafe * pvPageSize);
+
+  const ordenados = useMemo(() => applySort(filtrados, sort, (f, key) => {
+    switch (key) {
+      case 'dni': return f.dni;
+      case 'nombres': return f.nombres;
+      case 'perfil': return f.perfil ? Number(f.perfil) : null;
+      case 'puesto': return f.puesto;
+      case 'lugar': return f.lugar;
+      case 'apt': return f.a ? numPuntajeEval(f.a.puntaje) : null;
+      case 'conoc': return f.c ? numPuntajeEval(f.c.puntaje) : null;
+      case 'prom': return f.prom;
+      default: return null;
+    }
+  }), [filtrados, sort]);
+
+  const paginas = Math.max(1, Math.ceil(ordenados.length / pageSize));
+  const safe = Math.min(Math.max(1, page), paginas);
+  const pagina = ordenados.slice((safe - 1) * pageSize, safe * pageSize);
+
+  return <section className="exam-card setup-card">
+    <div className="quiz-topline"><div><p className="eyebrow">Concurso Público de Méritos N° 06-2026-CG</p><h2>Consolidado aptitud + conocimientos</h2></div></div>
+    {(!apt || !con) && !error && <p className="warning">Cargando consolidado...</p>}
+    {error && <p className="warning" role="alert">{error}</p>}
+    {apt && con && <>
+      <div className="stats-grid plazas-stats">
+        <span>Postulantes <strong>{stats.total.toLocaleString('es-PE')}</strong></span>
+        <span>Con ambas notas <strong>{stats.conAmbas.toLocaleString('es-PE')}</strong></span>
+        <span>Solo conocimientos <strong>{stats.soloConoc.toLocaleString('es-PE')}</strong></span>
+        <span>Solo aptitud <strong>{stats.soloApt.toLocaleString('es-PE')}</strong></span>
+        <span>Promedio ponderado general <strong>{stats.promGral !== null ? stats.promGral.toFixed(2) : '—'}</strong></span>
+        <span>Distinto perfil entre evaluaciones <strong>{stats.distintos}</strong></span>
+      </div>
+      <p className="source">Ponderado = aptitud × 20% + conocimientos × 30% (máx. 10 pts). Solo se calcula con ambas notas.</p>
+      <section className="toolbar setup plazas-filters" aria-label="Filtros del consolidado">
+        <label><span>DNI</span><input value={dni} onChange={(e) => setDni(e.target.value)} placeholder="N° de documento..." /></label>
+        <label><span>Nombre</span><input value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Apellidos y nombres..." /></label>
+        <label><span>Código</span><input value={codigo} onChange={(e) => setCodigo(e.target.value)} placeholder="N° de perfil, ej. 404..." /></label>
+        <label><span>Perfil</span><input value={perfilTxt} onChange={(e) => setPerfilTxt(e.target.value)} placeholder="Texto del puesto, ej. auditor..." /></label>
+        <label><span>Puesto</span><select value={puesto} onChange={(e) => setPuesto(e.target.value)}><option>TODOS</option>{puestosPresentes.map((p) => <option key={p}>{p}</option>)}</select></label>
+        <label><span>Perfil</span><select value={perfil} onChange={(e) => setPerfil(e.target.value)}><option>TODOS</option>{perfilesPresentes.map((p) => <option key={p} value={p}>{p}</option>)}</select></label>
+        <label><span>Lugar de prestación</span><select value={lugar} onChange={(e) => setLugar(e.target.value)}><option>TODOS</option>{lugaresPresentes.map((l) => <option key={l}>{l}</option>)}</select></label>
+      </section>
+      <h3>Perfiles ({perfilesVistaOrd.length}) — presiona un perfil para ver sus postulantes</h3>
+      <div className="plazas-table cons-perf-table">
+        <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="COD" k="cod" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="LUGAR" k="lugar" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PLAZAS" k="plazas" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="POSTULANTES" k="post" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PROMEDIO" k="prom" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /></div>
+        {pvPagina.map((p, i) => <div className={`plazas-row${perfilSel === p.numero ? ' selected' : ''}`} key={p.numero} onClick={() => setPerfilSel((v) => v === p.numero ? null : p.numero)}>
+          <span>{(pvSafe - 1) * pvPageSize + i + 1}</span>
+          <span><strong>{p.numero}</strong></span>
+          <span>{p.puesto || '—'}</span>
+          <span>{p.lugar || '—'}</span>
+          <span>{p.plazas ?? '—'}</span>
+          <span>{p.postulantes.toLocaleString('es-PE')}</span>
+          <span>{p.prom !== null ? p.prom.toFixed(2) : '—'}</span>
+        </div>)}
+      </div>
+      <Paginador total={perfilesVistaOrd.length} pageSize={pvPageSize} page={pvSafe} onSize={setPvPageSize} onPage={setPvPage} />
+      <h3>Postulantes · Total encontrados: {filtrados.length.toLocaleString('es-PE')}{perfilSel ? ` · perfil ${perfilSel}` : ''}</h3>
+      {perfilSel && <p><button className="ghost" onClick={() => setPerfilSel(null)}>← Ver todos los perfiles</button></p>}
+      <div className="plazas-table cons-table">
+        <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="DNI" k="dni" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APELLIDOS Y NOMBRES" k="nombres" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PERFIL" k="perfil" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="LUGAR" k="lugar" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APTITUD" k="apt" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="CONOCIM." k="conoc" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PONDERADO" k="prom" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /></div>
+        {pagina.map((f, i) => <div className="plazas-row" key={f.dni}>
+          <span>{(safe - 1) * pageSize + i + 1}</span>
+          <span>{f.dni}</span>
+          <span>{f.nombres || '—'}</span>
+          <span>{f.perfil || '—'}</span>
+          <span>{f.puesto || '—'}</span>
+          <span>{f.lugar || '—'}</span>
+          <span>{f.a ? <span className={claseCondicion(f.a.condicion)}>{f.a.puntaje} · {f.a.condicion}</span> : '—'}</span>
+          <span>{f.c ? <span className={claseCondicion(f.c.condicion)}>{f.c.puntaje} · {f.c.condicion}</span> : '—'}</span>
+          <span><strong>{f.prom !== null ? f.prom.toFixed(2) : '—'}</strong></span>
+        </div>)}
+      </div>
+      <Paginador total={filtrados.length} pageSize={pageSize} page={safe} onSize={setPageSize} onPage={setPage} />
+      {filtrados.length === 0 && <p className="warning">Sin resultados para los filtros actuales.</p>}
+    </>}
+  </section>;
 }
 type StoredCatalog = { version: string; exams: Exam[]; customQuestions: Question[]; savedAt: string };
 
@@ -440,6 +867,8 @@ function App() {
   const [plazaPageSize, setPlazaPageSize] = useState(25);
   const [perfilPage, setPerfilPage] = useState(1);
   const [perfilPageSize, setPerfilPageSize] = useState(50);
+  const [perfilSort, setPerfilSort] = useState<SortState>(null);
+  const [postSort, setPostSort] = useState<SortState>(null);
   const timerRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
 
@@ -800,10 +1229,34 @@ function App() {
 
   const perfilPaginas = Math.max(1, Math.ceil(perfilesFiltrados.length / perfilPageSize));
   const perfilPageSafe = Math.min(Math.max(1, perfilPage), perfilPaginas);
-  const perfilesPagina = perfilesFiltrados.slice((perfilPageSafe - 1) * perfilPageSize, perfilPageSafe * perfilPageSize);
+  const perfilesOrdenados = useMemo(() => applySort(perfilesFiltrados, perfilSort, (p, key) => {
+    const c = postulantesPorPerfil.get(clavePerfil(p.cod_perfil));
+    switch (key) {
+      case 'cod': return Number(clavePerfil(p.cod_perfil)) || null;
+      case 'puesto': return p.nombre_puesto;
+      case 'unidad': return p.unidad_organizacion;
+      case 'lugar': return p.lugar_prestacion;
+      case 'plazas': return p.numero_posiciones;
+      case 'post': return c ? c.total : 0;
+      case 'ratio': return c && p.numero_posiciones ? c.califica / p.numero_posiciones : null;
+      default: return null;
+    }
+  }), [perfilesFiltrados, perfilSort, postulantesPorPerfil]);
+  const perfilesPagina = perfilesOrdenados.slice((perfilPageSafe - 1) * perfilPageSize, perfilPageSafe * perfilPageSize);
   const postPaginas = Math.max(1, Math.ceil(postulantesDetalle.length / plazaPageSize));
   const postPageSafe = Math.min(Math.max(1, plazaPage), postPaginas);
-  const postulantesPagina = postulantesDetalle.slice((postPageSafe - 1) * plazaPageSize, postPageSafe * plazaPageSize);
+  const postulantesOrdenados = useMemo(() => applySort(postulantesDetalle, postSort, (p, key) => {
+    switch (key) {
+      case 'numero': return p.numero;
+      case 'tipo': return p.tipo_doc;
+      case 'doc': return p.numero_documento;
+      case 'nombres': return p.apellidos_nombres;
+      case 'perfil': return p.numero_perfil.trim() ? Number(p.numero_perfil.trim()) : null;
+      case 'cond': return p.condicion;
+      default: return null;
+    }
+  }), [postulantesDetalle, postSort]);
+  const postulantesPagina = postulantesOrdenados.slice((postPageSafe - 1) * plazaPageSize, postPageSafe * plazaPageSize);
   const perfilSeleccionado = plazas?.perfiles.find((p) => p.cod_perfil === plazaSelected) || null;
 
   const PERFIL_CONDS = ['TODOS', 'CALIFICA', 'NO CALIFICA', 'DESCALIFICA'];
@@ -908,6 +1361,9 @@ function App() {
       <button className={mode === 'admin' ? 'primary' : 'secondary'} onClick={() => setMode('admin')}>Administración</button>
       <button className={mode === 'import' ? 'primary' : 'secondary'} onClick={() => setMode('import')}><FilePlus2 size={18} /> Agregar examen PDF</button>
       <button className={mode === 'plazas' ? 'primary' : 'secondary'} onClick={() => setMode('plazas')}>Plazas 2026</button>
+      <button className={mode === 'aptitud' ? 'primary' : 'secondary'} onClick={() => setMode('aptitud')}>Aptitud 2026</button>
+      <button className={mode === 'conocimientos' ? 'primary' : 'secondary'} onClick={() => setMode('conocimientos')}>Conocimientos 2026</button>
+      <button className={mode === 'consolidado' ? 'primary' : 'secondary'} onClick={() => setMode('consolidado')}>Consolidado 2026</button>
     </div>
 
     {mode === 'practice' && <>
@@ -1018,10 +1474,11 @@ function App() {
         </section>
         <h3>Perfiles ({perfilesFiltrados.length})</h3>
         <div className="plazas-table">
-          <div className="plazas-row plazas-head"><span>COD</span><span>Puesto</span><span>Unidad</span><span>Lugar</span><span>Plazas</span><span>Postulantes</span><span>Ratio</span></div>
-          {perfilesPagina.map((p) => {
+          <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="COD" k="cod" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Puesto" k="puesto" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Unidad" k="unidad" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Lugar" k="lugar" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Plazas" k="plazas" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Postulantes" k="post" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Ratio" k="ratio" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /></div>
+          {perfilesPagina.map((p, i) => {
             const c = postulantesPorPerfil.get(clavePerfil(p.cod_perfil)) || { total: 0, califica: 0, noCalifica: 0, descalifica: 0 };
             return <div className={`plazas-row${plazaSelected === p.cod_perfil ? ' selected' : ''}`} key={p.cod_perfil} onClick={() => setPlazaSelected((v) => v === p.cod_perfil ? null : p.cod_perfil)}>
+              <span>{(perfilPageSafe - 1) * perfilPageSize + i + 1}</span>
               <span><strong>COD {p.cod_perfil}</strong><br />{p.categoria_remunerativa}</span>
               <span>{p.nombre_puesto}</span>
               <span>{p.unidad_organizacion}</span>
@@ -1042,8 +1499,9 @@ function App() {
         </div>}
         {plazaSelected && <p><button className="ghost" onClick={() => { setPlazaSelected(null); setPlazaPerfil('TODOS'); }}>← Ver todos los perfiles</button></p>}
         <div className="plazas-table postulantes-table">
-          <div className="plazas-row plazas-head"><span>N°</span><span>TIPO DOC</span><span>N° DOCUMENTO</span><span>APELLIDOS Y NOMBRES</span><span>N° PERFIL</span><span>CONDICIÓN</span></div>
-          {postulantesPagina.map((p) => <div className="plazas-row" key={p.numero}>
+          <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="N°" k="numero" sort={postSort} onSort={(k) => setPostSort((s) => nextSort(s, k))} /><SortTh label="TIPO DOC" k="tipo" sort={postSort} onSort={(k) => setPostSort((s) => nextSort(s, k))} /><SortTh label="N° DOCUMENTO" k="doc" sort={postSort} onSort={(k) => setPostSort((s) => nextSort(s, k))} /><SortTh label="APELLIDOS Y NOMBRES" k="nombres" sort={postSort} onSort={(k) => setPostSort((s) => nextSort(s, k))} /><SortTh label="N° PERFIL" k="perfil" sort={postSort} onSort={(k) => setPostSort((s) => nextSort(s, k))} /><SortTh label="CONDICIÓN" k="cond" sort={postSort} onSort={(k) => setPostSort((s) => nextSort(s, k))} /></div>
+          {postulantesPagina.map((p, i) => <div className="plazas-row" key={p.numero}>
+            <span>{(postPageSafe - 1) * plazaPageSize + i + 1}</span>
             <span>{p.numero}</span>
             <span>{p.tipo_doc}</span>
             <span>{p.numero_documento}</span>
@@ -1056,6 +1514,10 @@ function App() {
         {postulantesDetalle.length === 0 && <p className="warning">Sin resultados para los filtros actuales.</p>}
       </>}
     </section>}
+
+    {mode === 'aptitud' && <SeccionEval titulo="Resultados de aptitud 2026" tag="aptitud" />}
+    {mode === 'conocimientos' && <SeccionEval titulo="Resultados de conocimientos 2026" tag="conocimientos" />}
+    {mode === 'consolidado' && <SeccionConsolidado />}
   </main>;
 }
 
