@@ -85,7 +85,7 @@ type DraftExam = {
 };
 type Answer = { questionId: string; selected: string; correct: boolean | null; elapsedAt: number };
 type Screen = 'home' | 'quiz' | 'results' | 'review';
-type AdminMode = 'practice' | 'admin' | 'import' | 'plazas' | 'aptitud' | 'conocimientos' | 'consolidado';
+type AdminMode = 'practice' | 'admin' | 'import' | 'plazas' | 'aptitud' | 'conocimientos' | 'curricular' | 'consolidado';
 type Perfil2026 = {
   cod_perfil: string; categoria_remunerativa: string; unidad_organizacion: string;
   nombre_puesto: string; numero_posiciones: number; lugar_prestacion: string;
@@ -179,9 +179,18 @@ function numPuntajeEval(puntaje: string): number | null {
   return Number.isFinite(v) ? v : null;
 }
 
-// Ponderación oficial: aptitud 20% + conocimientos 30% (sobre 10 puntos).
+// Ponderación oficial: aptitud 20% + conocimientos 30% + evaluación curricular 30%.
 const PESO_APTITUD = 0.20;
 const PESO_CONOCIMIENTOS = 0.30;
+const PESO_CURRICULAR = 0.30;
+
+type EvalTag = 'aptitud' | 'conocimientos' | 'curricular';
+
+const EVAL_LOADERS: Record<EvalTag, () => Promise<{ default: { resultados?: ResultadoEval[] } }>> = {
+  aptitud: () => import('./data/resultados_aptitud_2026.json'),
+  conocimientos: () => import('./data/resultados_conocimientos_2026.json'),
+  curricular: () => import('./data/resultados_curricular_2026.json'),
+};
 
 type PadronData = {
   porDni: Map<string, Postulante2026>;
@@ -209,21 +218,21 @@ function usePadron() {
   return padron;
 }
 
-function useEval(tag: 'aptitud' | 'conocimientos') {
+function useEval(tag: EvalTag) {
   const [data, setData] = useState<ResultadoEval[] | null>(null);
   const [error, setError] = useState('');
   useEffect(() => {
     let vivo = true;
     setError('');
-    const prom = tag === 'aptitud' ? import('./data/resultados_aptitud_2026.json') : import('./data/resultados_conocimientos_2026.json');
-    prom.then((mod) => { if (vivo) setData((mod.default.resultados || []) as ResultadoEval[]); })
+    EVAL_LOADERS[tag]()
+      .then((mod) => { if (vivo) setData((mod.default.resultados || []) as ResultadoEval[]); })
       .catch(() => { if (vivo) setError(`No se pudo cargar resultados de ${tag} 2026.`); });
     return () => { vivo = false; };
   }, [tag]);
   return { data, error };
 }
 
-function SeccionEval({ titulo, tag }: { titulo: string; tag: 'aptitud' | 'conocimientos' }) {
+function SeccionEval({ titulo, tag }: { titulo: string; tag: EvalTag }) {
   const { data, error } = useEval(tag);
   const padron = usePadron();
   const [dni, setDni] = useState('');
@@ -349,6 +358,7 @@ function SeccionEval({ titulo, tag }: { titulo: string; tag: 'aptitud' | 'conoci
 function SeccionConsolidado() {
   const [apt, setApt] = useState<ResultadoEval[] | null>(null);
   const [con, setCon] = useState<ResultadoEval[] | null>(null);
+  const [cur, setCur] = useState<ResultadoEval[] | null>(null);
   const [error, setError] = useState('');
   const padron = usePadron();
   const [dni, setDni] = useState('');
@@ -358,6 +368,7 @@ function SeccionConsolidado() {
   const [puesto, setPuesto] = useState('TODOS');
   const [perfil, setPerfil] = useState('TODOS');
   const [lugar, setLugar] = useState('TODOS');
+  const [curCond, setCurCond] = useState('TODOS');
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(25);
   const [sort, setSort] = useState<SortState>(null);
@@ -368,47 +379,65 @@ function SeccionConsolidado() {
 
   useEffect(() => {
     let vivo = true;
-    Promise.all([import('./data/resultados_aptitud_2026.json'), import('./data/resultados_conocimientos_2026.json')])
-      .then(([am, cm]) => {
+    Promise.all([EVAL_LOADERS.aptitud(), EVAL_LOADERS.conocimientos(), EVAL_LOADERS.curricular()])
+      .then(([am, cm, um]) => {
         if (!vivo) return;
         setApt((am.default.resultados || []) as ResultadoEval[]);
         setCon((cm.default.resultados || []) as ResultadoEval[]);
+        setCur((um.default.resultados || []) as ResultadoEval[]);
       })
       .catch(() => { if (vivo) setError('No se pudo cargar el consolidado 2026.'); });
     return () => { vivo = false; };
   }, []);
 
   const filas = useMemo(() => {
-    if (!apt || !con) return [];
+    if (!apt || !con || !cur) return [];
     const mA = new Map(apt.map((r) => [r.numero_documento, r]));
     const mC = new Map(con.map((r) => [r.numero_documento, r]));
-    return unique([...mA.keys(), ...mC.keys()]).sort().map((doc) => {
+    const mU = new Map(cur.map((r) => [r.numero_documento, r]));
+    return unique([...mA.keys(), ...mC.keys(), ...mU.keys()]).sort().map((doc) => {
       const a = mA.get(doc) || null;
       const c = mC.get(doc) || null;
+      const u = mU.get(doc) || null;
       const pad = padron?.porDni.get(doc) || null;
-      const nombres = pad?.apellidos_nombres || a?.apellidos_nombres || c?.apellidos_nombres || '';
-      const perf = (pad?.numero_perfil || '').trim() || (a?.numero_perfil || c?.numero_perfil || '').trim();
+      const nombres = pad?.apellidos_nombres || a?.apellidos_nombres || c?.apellidos_nombres || u?.apellidos_nombres || '';
+      const perf = (pad?.numero_perfil || '').trim() || (a?.numero_perfil || c?.numero_perfil || u?.numero_perfil || '').trim();
       const puestoN = (perf && padron?.perfiles.get(perf)?.nombre_puesto) || '';
       const lugarN = (perf && padron?.perfiles.get(perf)?.lugar_prestacion) || '';
       const paNum = a ? numPuntajeEval(a.puntaje) : null;
       const pcNum = c ? numPuntajeEval(c.puntaje) : null;
-      const prom = paNum !== null && pcNum !== null ? paNum * PESO_APTITUD + pcNum * PESO_CONOCIMIENTOS : null;
-      const distintoPerfil = Boolean(a && c && a.numero_perfil.trim() !== c.numero_perfil.trim());
-      return { dni: doc, nombres, perfil: perf, puesto: puestoN, lugar: lugarN, a, c, prom, distintoPerfil };
+      const puNum = u ? numPuntajeEval(u.puntaje) : null;
+      const prom = paNum !== null && pcNum !== null && puNum !== null
+        ? paNum * PESO_APTITUD + pcNum * PESO_CONOCIMIENTOS + puNum * PESO_CURRICULAR
+        : null;
+      const perfilesEval = [a, c, u]
+        .map((r) => (r?.numero_perfil || '').trim())
+        .filter(Boolean);
+      const distintoPerfil = new Set(perfilesEval).size > 1;
+      return { dni: doc, nombres, perfil: perf, puesto: puestoN, lugar: lugarN, a, c, u, prom, distintoPerfil };
     });
-  }, [apt, con, padron]);
+  }, [apt, con, cur, padron]);
 
   const puestosPresentes = useMemo(() => unique(filas.map((f) => f.puesto).filter(Boolean)).sort((a, b) => a.localeCompare(b)), [filas]);
   const perfilesPresentes = useMemo(() => unique(filas.map((f) => f.perfil).filter(Boolean)).sort((a, b) => Number(a) - Number(b)), [filas]);
   const lugaresPresentes = useMemo(() => unique(filas.map((f) => f.lugar).filter(Boolean)).sort((a, b) => a.localeCompare(b)), [filas]);
 
+  const curConds = useMemo(() => unique((cur || []).map((r) => r.condicion)).sort(), [cur]);
+
   const stats = useMemo(() => {
     const conAmbas = filas.filter((f) => f.a && f.c).length;
-    const soloConoc = filas.filter((f) => !f.a && f.c).length;
-    const soloApt = filas.filter((f) => f.a && !f.c).length;
+    const conTres = filas.filter((f) => f.prom !== null).length;
+    const sinCurricular = filas.filter((f) => f.a && f.c && f.prom === null).length;
+    const soloConoc = filas.filter((f) => !f.a && f.c && !f.u).length;
+    const soloApt = filas.filter((f) => f.a && !f.c && !f.u).length;
+    const soloCurricular = filas.filter((f) => !f.a && !f.c && f.u).length;
+    const curCalifica = filas.filter((f) => f.u?.condicion === 'CALIFICA').length;
+    const curNoCalifica = filas.filter((f) => f.u?.condicion === 'NO CALIFICA').length;
+    const curDescalifica = filas.filter((f) => f.u?.condicion === 'DESCALIFICA').length;
     const proms = filas.map((f) => f.prom).filter((v): v is number => v !== null);
     return {
-      total: filas.length, conAmbas, soloConoc, soloApt,
+      total: filas.length, conAmbas, conTres, sinCurricular, soloConoc, soloApt, soloCurricular,
+      curCalifica, curNoCalifica, curDescalifica,
       distintos: filas.filter((f) => f.distintoPerfil).length,
       promGral: proms.length ? proms.reduce((x, y) => x + y, 0) / proms.length : null,
     };
@@ -429,16 +458,17 @@ function SeccionConsolidado() {
       .filter((f) => !t || f.puesto.toLowerCase().includes(t))
       .filter((f) => puesto === 'TODOS' || f.puesto === puesto)
       .filter((f) => perfil === 'TODOS' || f.perfil === perfil)
-      .filter((f) => lugar === 'TODOS' || f.lugar === lugar);
-  }, [filas, dni, nombre, codigo, perfilTxt, puesto, perfil, lugar]);
+      .filter((f) => lugar === 'TODOS' || f.lugar === lugar)
+      .filter((f) => curCond === 'TODOS' || f.u?.condicion === curCond);
+  }, [filas, dni, nombre, codigo, perfilTxt, puesto, perfil, lugar, curCond]);
 
   // Presionar una fila de perfil muestra sus postulantes sin tocar el filtro Perfil.
   const filtrados = useMemo(() => (
     perfilSel ? filtradosBase.filter((f) => f.perfil === perfilSel) : filtradosBase
   ), [filtradosBase, perfilSel]);
 
-  useEffect(() => { setPage(1); setPerfilSel(null); }, [dni, nombre, codigo, perfilTxt, puesto, perfil, lugar, pageSize]);
-  useEffect(() => { setPvPage(1); }, [dni, nombre, codigo, perfilTxt, puesto, perfil, lugar, pvPageSize]);
+  useEffect(() => { setPage(1); setPerfilSel(null); }, [dni, nombre, codigo, perfilTxt, puesto, perfil, lugar, curCond, pageSize]);
+  useEffect(() => { setPvPage(1); }, [dni, nombre, codigo, perfilTxt, puesto, perfil, lugar, curCond, pvPageSize]);
 
   // Perfiles presentes en el resultado actual: al elegir lugar salen primero
   // los perfiles, y al presionar un perfil salen sus postulantes.
@@ -489,6 +519,7 @@ function SeccionConsolidado() {
       case 'lugar': return f.lugar;
       case 'apt': return f.a ? numPuntajeEval(f.a.puntaje) : null;
       case 'conoc': return f.c ? numPuntajeEval(f.c.puntaje) : null;
+      case 'cur': return f.u ? numPuntajeEval(f.u.puntaje) : null;
       case 'prom': return f.prom;
       default: return null;
     }
@@ -499,19 +530,24 @@ function SeccionConsolidado() {
   const pagina = ordenados.slice((safe - 1) * pageSize, safe * pageSize);
 
   return <section className="exam-card setup-card">
-    <div className="quiz-topline"><div><p className="eyebrow">Concurso Público de Méritos N° 06-2026-CG</p><h2>Consolidado aptitud + conocimientos</h2></div></div>
-    {(!apt || !con) && !error && <p className="warning">Cargando consolidado...</p>}
+    <div className="quiz-topline"><div><p className="eyebrow">Concurso Público de Méritos N° 06-2026-CG</p><h2>Consolidado aptitud + conocimientos + evaluación curricular</h2></div></div>
+    {(!apt || !con || !cur) && !error && <p className="warning">Cargando consolidado...</p>}
     {error && <p className="warning" role="alert">{error}</p>}
-    {apt && con && <>
+    {apt && con && cur && <>
       <div className="stats-grid plazas-stats">
         <span>Postulantes <strong>{stats.total.toLocaleString('es-PE')}</strong></span>
-        <span>Con ambas notas <strong>{stats.conAmbas.toLocaleString('es-PE')}</strong></span>
+        <span>Con las 3 notas <strong>{stats.conTres.toLocaleString('es-PE')}</strong></span>
+        <span>Aptitud + conocimientos sin nota curricular <strong>{stats.sinCurricular.toLocaleString('es-PE')}</strong></span>
         <span>Solo conocimientos <strong>{stats.soloConoc.toLocaleString('es-PE')}</strong></span>
         <span>Solo aptitud <strong>{stats.soloApt.toLocaleString('es-PE')}</strong></span>
+        <span>Solo curricular <strong>{stats.soloCurricular.toLocaleString('es-PE')}</strong></span>
+        <span>Curricular califica <strong>{stats.curCalifica.toLocaleString('es-PE')}</strong></span>
+        <span>Curricular no califica <strong>{stats.curNoCalifica.toLocaleString('es-PE')}</strong></span>
+        <span>Curricular descalifica <strong>{stats.curDescalifica.toLocaleString('es-PE')}</strong></span>
         <span>Promedio ponderado general <strong>{stats.promGral !== null ? stats.promGral.toFixed(2) : '—'}</strong></span>
         <span>Distinto perfil entre evaluaciones <strong>{stats.distintos}</strong></span>
       </div>
-      <p className="source">Ponderado = aptitud × 20% + conocimientos × 30% (máx. 10 pts). Solo se calcula con ambas notas.</p>
+      <p className="source">Ponderado = aptitud × 20% + conocimientos × 30% + evaluación curricular × 30% (máx. 16 pts). Solo se calcula con las tres notas.</p>
       <section className="toolbar setup plazas-filters" aria-label="Filtros del consolidado">
         <label><span>DNI</span><input value={dni} onChange={(e) => setDni(e.target.value)} placeholder="N° de documento..." /></label>
         <label><span>Nombre</span><input value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Apellidos y nombres..." /></label>
@@ -520,10 +556,11 @@ function SeccionConsolidado() {
         <label><span>Puesto</span><select value={puesto} onChange={(e) => setPuesto(e.target.value)}><option>TODOS</option>{puestosPresentes.map((p) => <option key={p}>{p}</option>)}</select></label>
         <label><span>Perfil</span><select value={perfil} onChange={(e) => setPerfil(e.target.value)}><option>TODOS</option>{perfilesPresentes.map((p) => <option key={p} value={p}>{p}</option>)}</select></label>
         <label><span>Lugar de prestación</span><select value={lugar} onChange={(e) => setLugar(e.target.value)}><option>TODOS</option>{lugaresPresentes.map((l) => <option key={l}>{l}</option>)}</select></label>
+        <label><span>Cond. curricular</span><select value={curCond} onChange={(e) => setCurCond(e.target.value)}><option>TODOS</option>{curConds.map((c) => <option key={c}>{c}</option>)}</select></label>
       </section>
       <h3>Perfiles ({perfilesVistaOrd.length}) — presiona un perfil para ver sus postulantes</h3>
       <div className="plazas-table cons-perf-table">
-        <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="COD" k="cod" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="LUGAR" k="lugar" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PLAZAS" k="plazas" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="POSTULANTES" k="post" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PROMEDIO" k="prom" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /></div>
+        <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="COD" k="cod" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="LUGAR" k="lugar" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PLAZAS" k="plazas" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="POSTULANTES" k="post" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PONDERADO" k="prom" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /></div>
         {pvPagina.map((p, i) => <div className={`plazas-row${perfilSel === p.numero ? ' selected' : ''}`} key={p.numero} onClick={() => setPerfilSel((v) => v === p.numero ? null : p.numero)}>
           <span>{(pvSafe - 1) * pvPageSize + i + 1}</span>
           <span><strong>{p.numero}</strong></span>
@@ -538,7 +575,7 @@ function SeccionConsolidado() {
       <h3>Postulantes · Total encontrados: {filtrados.length.toLocaleString('es-PE')}{perfilSel ? ` · perfil ${perfilSel}` : ''}</h3>
       {perfilSel && <p><button className="ghost" onClick={() => setPerfilSel(null)}>← Ver todos los perfiles</button></p>}
       <div className="plazas-table cons-table">
-        <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="DNI" k="dni" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APELLIDOS Y NOMBRES" k="nombres" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PERFIL" k="perfil" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="LUGAR" k="lugar" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APTITUD" k="apt" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="CONOCIM." k="conoc" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PONDERADO" k="prom" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /></div>
+        <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="DNI" k="dni" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APELLIDOS Y NOMBRES" k="nombres" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PERFIL" k="perfil" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="LUGAR" k="lugar" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APTITUD" k="apt" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="CONOCIM." k="conoc" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="CURRIC." k="cur" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PONDERADO" k="prom" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /></div>
         {pagina.map((f, i) => <div className="plazas-row" key={f.dni}>
           <span>{(safe - 1) * pageSize + i + 1}</span>
           <span>{f.dni}</span>
@@ -548,6 +585,7 @@ function SeccionConsolidado() {
           <span>{f.lugar || '—'}</span>
           <span>{f.a ? <span className={claseCondicion(f.a.condicion)}>{f.a.puntaje} · {f.a.condicion}</span> : '—'}</span>
           <span>{f.c ? <span className={claseCondicion(f.c.condicion)}>{f.c.puntaje} · {f.c.condicion}</span> : '—'}</span>
+          <span>{f.u ? <span className={claseCondicion(f.u.condicion)}>{f.u.puntaje} · {f.u.condicion}</span> : '—'}</span>
           <span><strong>{f.prom !== null ? f.prom.toFixed(2) : '—'}</strong></span>
         </div>)}
       </div>
@@ -1363,6 +1401,7 @@ function App() {
       <button className={mode === 'plazas' ? 'primary' : 'secondary'} onClick={() => setMode('plazas')}>Plazas 2026</button>
       <button className={mode === 'aptitud' ? 'primary' : 'secondary'} onClick={() => setMode('aptitud')}>Aptitud 2026</button>
       <button className={mode === 'conocimientos' ? 'primary' : 'secondary'} onClick={() => setMode('conocimientos')}>Conocimientos 2026</button>
+      <button className={mode === 'curricular' ? 'primary' : 'secondary'} onClick={() => setMode('curricular')}>Evaluación curricular 2026</button>
       <button className={mode === 'consolidado' ? 'primary' : 'secondary'} onClick={() => setMode('consolidado')}>Consolidado 2026</button>
     </div>
 
@@ -1517,6 +1556,7 @@ function App() {
 
     {mode === 'aptitud' && <SeccionEval titulo="Resultados de aptitud 2026" tag="aptitud" />}
     {mode === 'conocimientos' && <SeccionEval titulo="Resultados de conocimientos 2026" tag="conocimientos" />}
+    {mode === 'curricular' && <SeccionEval titulo="Resultados de evaluación curricular 2026" tag="curricular" />}
     {mode === 'consolidado' && <SeccionConsolidado />}
   </main>;
 }
