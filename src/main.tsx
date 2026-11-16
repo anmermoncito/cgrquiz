@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ArrowLeft, Clock, FilePlus2, RotateCcw, Search, Trash2 } from 'lucide-react';
+import { ArrowLeft, Clock, Download, FilePlus2, RotateCcw, Search, Trash2 } from 'lucide-react';
 import banco from './data/examenes.json';
 import puestosData from './data/puestos.json';
 import perfilesData from './data/perfiles.json';
+import { csvFileName, exportCsv } from './csvExport';
 import { detectCodeAndPosition, extractPdfText, normalizeValue, parseQuestionsFromText, slug } from './pdfImport';
 import './styles.css';
 
@@ -315,6 +316,17 @@ function SeccionEval({ titulo, tag }: { titulo: string; tag: EvalTag }) {
   const safe = Math.min(Math.max(1, page), paginas);
   const pagina = ordenados.slice((safe - 1) * pageSize, safe * pageSize);
 
+  const exportarCsv = () => exportCsv(csvFileName(`resultados-${tag}-2026`), ordenados, [
+    { header: 'N°', value: (r) => r.numero },
+    { header: 'TIPO DOC', value: (r) => r.tipo_doc },
+    { header: 'N° DOCUMENTO', value: (r) => r.numero_documento },
+    { header: 'N° PERFIL', value: (r) => r.numero_perfil },
+    { header: 'APELLIDOS Y NOMBRES', value: (r) => nombreDe(r) },
+    { header: 'PUNTAJE', value: (r) => r.puntaje },
+    { header: 'CONDICIÓN', value: (r) => r.condicion },
+    { header: 'PUESTO', value: (r) => puestoDe(r) },
+  ]);
+
   return <section className="exam-card setup-card">
     <div className="quiz-topline"><div><p className="eyebrow">Concurso Público de Méritos N° 06-2026-CG</p><h2>{titulo}</h2></div></div>
     {!data && !error && <p className="warning">Cargando resultados...</p>}
@@ -335,6 +347,9 @@ function SeccionEval({ titulo, tag }: { titulo: string; tag: EvalTag }) {
         <label><span>Perfil</span><select value={perfil} onChange={(e) => setPerfil(e.target.value)}><option>TODOS</option>{perfilesPresentes.map((p) => <option key={p} value={p}>{p}</option>)}</select></label>
         <label><span>Condición</span><select value={cond} onChange={(e) => setCond(e.target.value)}><option>TODOS</option>{conds.map((c) => <option key={c}>{c}</option>)}</select></label>
       </section>
+      <div className="export-bar">
+        <button className="secondary" onClick={exportarCsv} disabled={!ordenados.length}><Download size={16} /> Exportar CSV · {ordenados.length.toLocaleString('es-PE')} filas</button>
+      </div>
       <div className="plazas-table eval-table">
         <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="N°" k="numero" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="TIPO DOC" k="tipo" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="N° DOCUMENTO" k="doc" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="N° PERFIL" k="perfil" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APELLIDOS Y NOMBRES" k="nombres" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PUNTAJE" k="puntaje" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="CONDICIÓN" k="cond" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /></div>
         {pagina.map((r, i) => <div className="plazas-row" key={`${tag}-${r.numero}`}>
@@ -529,6 +544,30 @@ function SeccionConsolidado() {
   const safe = Math.min(Math.max(1, page), paginas);
   const pagina = ordenados.slice((safe - 1) * pageSize, safe * pageSize);
 
+  const exportarPerfilesCsv = () => exportCsv(csvFileName('consolidado-perfiles-2026'), perfilesVistaOrd, [
+    { header: 'COD', value: (p) => p.numero },
+    { header: 'PUESTO', value: (p) => p.puesto },
+    { header: 'LUGAR', value: (p) => p.lugar },
+    { header: 'PLAZAS', value: (p) => p.plazas },
+    { header: 'POSTULANTES', value: (p) => p.postulantes },
+    { header: 'PONDERADO', value: (p) => p.prom !== null ? p.prom.toFixed(2) : '' },
+  ]);
+
+  const exportarPostulantesCsv = () => exportCsv(csvFileName('consolidado-postulantes-2026'), ordenados, [
+    { header: 'DNI', value: (f) => f.dni },
+    { header: 'APELLIDOS Y NOMBRES', value: (f) => f.nombres },
+    { header: 'PERFIL', value: (f) => f.perfil },
+    { header: 'PUESTO', value: (f) => f.puesto },
+    { header: 'LUGAR', value: (f) => f.lugar },
+    { header: 'APTITUD', value: (f) => f.a?.puntaje ?? '' },
+    { header: 'COND. APTITUD', value: (f) => f.a?.condicion ?? '' },
+    { header: 'CONOCIMIENTOS', value: (f) => f.c?.puntaje ?? '' },
+    { header: 'COND. CONOCIMIENTOS', value: (f) => f.c?.condicion ?? '' },
+    { header: 'CURRICULAR', value: (f) => f.u?.puntaje ?? '' },
+    { header: 'COND. CURRICULAR', value: (f) => f.u?.condicion ?? '' },
+    { header: 'PONDERADO', value: (f) => f.prom !== null ? f.prom.toFixed(2) : '' },
+  ]);
+
   return <section className="exam-card setup-card">
     <div className="quiz-topline"><div><p className="eyebrow">Concurso Público de Méritos N° 06-2026-CG</p><h2>Consolidado aptitud + conocimientos + evaluación curricular</h2></div></div>
     {(!apt || !con || !cur) && !error && <p className="warning">Cargando consolidado...</p>}
@@ -558,7 +597,10 @@ function SeccionConsolidado() {
         <label><span>Lugar de prestación</span><select value={lugar} onChange={(e) => setLugar(e.target.value)}><option>TODOS</option>{lugaresPresentes.map((l) => <option key={l}>{l}</option>)}</select></label>
         <label><span>Cond. curricular</span><select value={curCond} onChange={(e) => setCurCond(e.target.value)}><option>TODOS</option>{curConds.map((c) => <option key={c}>{c}</option>)}</select></label>
       </section>
-      <h3>Perfiles ({perfilesVistaOrd.length}) — presiona un perfil para ver sus postulantes</h3>
+      <div className="section-head">
+        <h3>Perfiles ({perfilesVistaOrd.length}) — presiona un perfil para ver sus postulantes</h3>
+        <button className="secondary" onClick={exportarPerfilesCsv} disabled={!perfilesVistaOrd.length}><Download size={16} /> Exportar CSV</button>
+      </div>
       <div className="plazas-table cons-perf-table">
         <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="COD" k="cod" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="LUGAR" k="lugar" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PLAZAS" k="plazas" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="POSTULANTES" k="post" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /><SortTh label="PONDERADO" k="prom" sort={pvSort} onSort={(k) => setPvSort((s) => nextSort(s, k))} /></div>
         {pvPagina.map((p, i) => <div className={`plazas-row${perfilSel === p.numero ? ' selected' : ''}`} key={p.numero} onClick={() => setPerfilSel((v) => v === p.numero ? null : p.numero)}>
@@ -572,7 +614,10 @@ function SeccionConsolidado() {
         </div>)}
       </div>
       <Paginador total={perfilesVistaOrd.length} pageSize={pvPageSize} page={pvSafe} onSize={setPvPageSize} onPage={setPvPage} />
-      <h3>Postulantes · Total encontrados: {filtrados.length.toLocaleString('es-PE')}{perfilSel ? ` · perfil ${perfilSel}` : ''}</h3>
+      <div className="section-head">
+        <h3>Postulantes · Total encontrados: {filtrados.length.toLocaleString('es-PE')}{perfilSel ? ` · perfil ${perfilSel}` : ''}</h3>
+        <button className="secondary" onClick={exportarPostulantesCsv} disabled={!ordenados.length}><Download size={16} /> Exportar CSV</button>
+      </div>
       {perfilSel && <p><button className="ghost" onClick={() => setPerfilSel(null)}>← Ver todos los perfiles</button></p>}
       <div className="plazas-table cons-table">
         <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="DNI" k="dni" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APELLIDOS Y NOMBRES" k="nombres" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PERFIL" k="perfil" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PUESTO" k="puesto" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="LUGAR" k="lugar" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="APTITUD" k="apt" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="CONOCIM." k="conoc" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="CURRIC." k="cur" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /><SortTh label="PONDERADO" k="prom" sort={sort} onSort={(k) => setSort((s) => nextSort(s, k))} /></div>
@@ -1297,6 +1342,33 @@ function App() {
   const postulantesPagina = postulantesOrdenados.slice((postPageSafe - 1) * plazaPageSize, postPageSafe * plazaPageSize);
   const perfilSeleccionado = plazas?.perfiles.find((p) => p.cod_perfil === plazaSelected) || null;
 
+  const exportarPerfilesPlazasCsv = () => exportCsv(csvFileName('plazas-perfiles-2026'), perfilesOrdenados, [
+    { header: 'COD', value: (p) => p.cod_perfil },
+    { header: 'CATEGORÍA REMUNERATIVA', value: (p) => p.categoria_remunerativa },
+    { header: 'PUESTO', value: (p) => p.nombre_puesto },
+    { header: 'UNIDAD DE ORGANIZACIÓN', value: (p) => p.unidad_organizacion },
+    { header: 'LUGAR DE PRESTACIÓN', value: (p) => p.lugar_prestacion },
+    { header: 'PLAZAS', value: (p) => p.numero_posiciones },
+    { header: 'POSTULANTES', value: (p) => postulantesPorPerfil.get(clavePerfil(p.cod_perfil))?.total ?? 0 },
+    { header: 'CALIFICAN', value: (p) => postulantesPorPerfil.get(clavePerfil(p.cod_perfil))?.califica ?? 0 },
+    { header: 'NO CALIFICAN', value: (p) => postulantesPorPerfil.get(clavePerfil(p.cod_perfil))?.noCalifica ?? 0 },
+    { header: 'DESCALIFICAN', value: (p) => postulantesPorPerfil.get(clavePerfil(p.cod_perfil))?.descalifica ?? 0 },
+    { header: 'RATIO', value: (p) => {
+      const c = postulantesPorPerfil.get(clavePerfil(p.cod_perfil));
+      return c && p.numero_posiciones ? (c.califica / p.numero_posiciones).toFixed(1) : '';
+    } },
+    { header: 'REMUNERACIÓN', value: (p) => p.remuneracion ?? '' },
+  ]);
+
+  const exportarPostulantesPlazasCsv = () => exportCsv(csvFileName('plazas-postulantes-2026'), postulantesOrdenados, [
+    { header: 'N°', value: (p) => p.numero },
+    { header: 'TIPO DOC', value: (p) => p.tipo_doc },
+    { header: 'N° DOCUMENTO', value: (p) => p.numero_documento },
+    { header: 'APELLIDOS Y NOMBRES', value: (p) => p.apellidos_nombres },
+    { header: 'N° PERFIL', value: (p) => p.numero_perfil },
+    { header: 'CONDICIÓN', value: (p) => p.condicion },
+  ]);
+
   const PERFIL_CONDS = ['TODOS', 'CALIFICA', 'NO CALIFICA', 'DESCALIFICA'];
 
   if (screen === 'quiz' && activeQuestion) {
@@ -1511,7 +1583,10 @@ function App() {
           <label><span>Condición</span><select value={plazaCond} onChange={(event) => setPlazaCond(event.target.value)}>{PERFIL_CONDS.map((c) => <option key={c}>{c}</option>)}</select></label>
           <label className="search"><span>Buscar</span><Search size={18} /><input value={plazaQuery} onChange={(event) => { setPlazaQuery(event.target.value); setPlazaSelected(null); setPlazaPerfil('TODOS'); }} placeholder="Perfil, puesto, nombre, documento..." /></label>
         </section>
-        <h3>Perfiles ({perfilesFiltrados.length})</h3>
+        <div className="section-head">
+          <h3>Perfiles ({perfilesFiltrados.length})</h3>
+          <button className="secondary" onClick={exportarPerfilesPlazasCsv} disabled={!perfilesOrdenados.length}><Download size={16} /> Exportar CSV</button>
+        </div>
         <div className="plazas-table">
           <div className="plazas-row plazas-head"><span title="Posición en el resultado">#</span><SortTh label="COD" k="cod" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Puesto" k="puesto" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Unidad" k="unidad" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Lugar" k="lugar" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Plazas" k="plazas" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Postulantes" k="post" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /><SortTh label="Ratio" k="ratio" sort={perfilSort} onSort={(k) => setPerfilSort((s) => nextSort(s, k))} /></div>
           {perfilesPagina.map((p, i) => {
@@ -1529,7 +1604,10 @@ function App() {
           })}
         </div>
         <Paginador total={perfilesFiltrados.length} pageSize={perfilPageSize} page={perfilPageSafe} onSize={setPerfilPageSize} onPage={setPerfilPage} />
-        <h3>Postulantes · Total encontrados: {postulantesDetalle.length.toLocaleString('es-PE')}</h3>
+        <div className="section-head">
+          <h3>Postulantes · Total encontrados: {postulantesDetalle.length.toLocaleString('es-PE')}</h3>
+          <button className="secondary" onClick={exportarPostulantesPlazasCsv} disabled={!postulantesOrdenados.length}><Download size={16} /> Exportar CSV</button>
+        </div>
         {perfilSeleccionado && <div className="position-summary">
           <h2>PERFIL {perfilSeleccionado.cod_perfil}</h2>
           <p><strong>Puesto:</strong> {perfilSeleccionado.nombre_puesto}</p>

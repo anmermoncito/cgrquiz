@@ -11,6 +11,8 @@
     "positions": "node scripts/build-positions.cjs",
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
+    "test": "node scripts/test-resultados.cjs && node --experimental-strip-types scripts/test-csv.mjs",
+    "testcsv": "node --experimental-strip-types scripts/test-csv.mjs",
     "preview": "vite preview --host 0.0.0.0"
   },
   "keywords": [],

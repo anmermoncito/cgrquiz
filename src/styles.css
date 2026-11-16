@@ -33,4 +33,9 @@
 
 .plazas-filters label{min-width:0}
 .plazas-filters input,.plazas-filters select{min-width:0;max-width:100%;text-overflow:ellipsis}
+
+.export-bar{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin:4px 0 10px}
+.export-bar button,.section-head button{padding:.55rem .9rem;font-size:.86rem}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 4px}
+.section-head h3{margin:0}
 @media (max-width:1000px){.cons-perf-table .plazas-row{grid-template-columns:1fr 1fr;min-width:0}}
